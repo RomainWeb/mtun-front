@@ -607,7 +607,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<pre>{{ (clubList$ | async) | json }}</pre>\n"
+            "templateData": "<pre>{{ (clubList$ | async) | json }}</pre>\n<h1 class=\"text-3xl font-bold underline text-red-500\">\n  Hello world!\n</h1>\n<fa-icon icon=\"coffee\"></fa-icon>\n"
         },
         {
             "name": "ButtonComponent",
@@ -740,6 +740,52 @@
                     }
                 }
             }
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-e4bc72d8dbe49e12c7653f98d2e94957c4bdeca16ad5661090ae311e78371c3b5ced086c20b312659de954dca0f0f00fb7d604d754a5205ea1985c3f2c10bc70-1",
+            "file": "src/ui/components/button/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mtun-button",
+            "styleUrls": [
+                "./button.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./button.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'mtun-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\nexport class ButtonComponent {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "ButtonComponent-1",
+            "templateData": "<p>button works!</p>\n"
         },
         {
             "name": "HeaderComponent",
@@ -904,13 +950,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-dc93e66f3bdac895772bb57081bb2174731907fef32e6229dcc1b60c942eddb65ee20193e57da300935b4c0a2a23712ce1f76e4fd6010987a7888f8d3fdfd340",
+            "id": "module-AppModule-b00efa445581fb81afe7202279fef3f2d8fdb0887da547d182cdb03a87249867ae8b42d15b957885cdb94bf9fc3ec3b0ff39f690576c6439fb8a86c1f7a494b8",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule, isDevMode } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { StoreModule } from '@ngrx/store';\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\nimport { EffectsModule } from '@ngrx/effects';\nimport {ClubModule} from \"../core/features/club/presentation/club.module\";\nimport {ClubEffects} from \"../core/features/club/presentation/store/effects\";\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    StoreModule.forRoot({}, {}),\n    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),\n    EffectsModule.forRoot([ClubEffects]),\n    ClubModule,\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "sourceCode": "import { NgModule, isDevMode } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { StoreModule } from '@ngrx/store';\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\nimport { EffectsModule } from '@ngrx/effects';\nimport { ClubModule } from '../core/features/club/presentation/club.module';\nimport { ClubEffects } from '../core/features/club/presentation/store/effects';\nimport { FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { UiModule } from '../ui/ui.module';\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    FontAwesomeModule,\n    UiModule,\n    StoreModule.forRoot({}, {}),\n    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),\n    EffectsModule.forRoot([ClubEffects]),\n    ClubModule,\n  ],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -932,6 +978,9 @@
                         },
                         {
                             "name": "ClubModule"
+                        },
+                        {
+                            "name": "UiModule"
                         }
                     ]
                 },
@@ -1010,6 +1059,86 @@
                 {
                     "type": "imports",
                     "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "FontawesomeModule",
+            "id": "module-FontawesomeModule-3ead19c1686591c6f0e7867af7a98c56031b97d7a4c68768e92a277e1000f06428d9ae2ed778aebeb36e8b28d643ef97594a4d810af8c6edbf2a6c07ff446602",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/ui/fontawesome.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport {\n  FontAwesomeModule,\n  FaIconLibrary,\n} from '@fortawesome/angular-fontawesome';\nimport { faCoffee } from '@fortawesome/free-solid-svg-icons';\n\n@NgModule({\n  declarations: [],\n  imports: [BrowserModule, FontAwesomeModule],\n})\nexport class FontawesomeModule {\n  constructor(library: FaIconLibrary) {\n    // Add an icon to the library for convenient access in other components\n    library.addIcons(faCoffee);\n  }\n}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "UiModule",
+            "id": "module-UiModule-b2e58b4906882cfc330f5b6c67c4b3e4558904853a9f7e58d8060e5e9a705d942cef413e6c249cf6de7c53b0bda43fb81278dd74cafcea3e799957ffd6fffe17",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/ui/ui.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FontawesomeModule } from './fontawesome.module';\nimport { ButtonComponent } from './components/button/button.component';\n\n@NgModule({\n  declarations: [ButtonComponent],\n  imports: [CommonModule, FontawesomeModule],\n  exports: [ButtonComponent],\n})\nexport class UiModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ButtonComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "FontawesomeModule"
+                        }
+                    ]
                 },
                 {
                     "type": "exports",
@@ -1950,6 +2079,15 @@
                 "name": "PageComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/ui/components/button/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             }
         ]

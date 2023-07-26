@@ -5,6 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   selector: 'storybook-button',
   imports: [CommonModule],
   template: ` <button
+    class="text-3xl font-bold underline text-red-500"
     type="button"
     (click)="onClick.emit($event)"
     [ngClass]="classes"
@@ -48,7 +49,9 @@ export default class ButtonComponent {
   onClick = new EventEmitter<Event>();
 
   public get classes(): string[] {
-    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+    const mode = this.primary
+      ? 'storybook-button--primary'
+      : 'storybook-button--secondary';
 
     return ['storybook-button', `storybook-button--${this.size}`, mode];
   }
