@@ -33,7 +33,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -94,7 +94,10 @@
               "-d",
               "."
             ],
-            "port": 6006
+            "port": 6006,
+            "styles": [
+              "src/styles/styles.scss"
+            ]
           }
         },
         "build-storybook": {

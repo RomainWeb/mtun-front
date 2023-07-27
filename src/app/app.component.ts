@@ -1,23 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {AppState, getClubList} from "../core/features/club/presentation/store/selectors";
-import {Observable} from "rxjs";
-import {ClubModel} from "../core/features/club/domain/models/club.model";
-import {fetchClubs} from "../core/features/club/presentation/store/actions";
+import { Component, OnInit } from '@angular/core';
+import { faker } from '@faker-js/faker';
 
 @Component({
   selector: 'mtun-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  clubList$: Observable<ClubModel[]>;
+  avatar = faker.image.avatar();
 
-  constructor(private store: Store<AppState>) {
-    this.clubList$ = store.select(getClubList);
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-    this.store.dispatch(fetchClubs());
-  }
+  ngOnInit(): void {}
 }

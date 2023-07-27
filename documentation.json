@@ -249,7 +249,7 @@
         },
         {
             "name": "ClubInMemoryImplRepository",
-            "id": "injectable-ClubInMemoryImplRepository-67144e2962eb14da049df6d61b7371455f4b33662cefd858c196be06a432d9b3f98fb66dab46614385d069e4594729f4b521be436cfae74f3d724e18815e2e51",
+            "id": "injectable-ClubInMemoryImplRepository-b8366989458612bcd17a4af1a06c9ac563bb7b08b73b0e365ce98da31d8f1dcb33495e0875c1866a11ffd123ddb4d1b697373b016304339ad502add06d797c32",
             "file": "src/core/features/club/data/repositories/club-in-memory-impl.repository.ts",
             "properties": [],
             "methods": [
@@ -259,7 +259,7 @@
                     "optional": false,
                     "returnType": "Observable<ClubModel[]>",
                     "typeParameters": [],
-                    "line": 12,
+                    "line": 11,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -271,7 +271,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import {ClubRepository} from \"../../domain/repositories/club.repository\";\r\nimport {Injectable} from \"@angular/core\";\r\nimport {ClubModel} from \"../../domain/models/club.model\";\r\nimport {Observable, of} from \"rxjs\";\r\nimport {CLUBS} from \"../mocks/clubs\";\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class ClubInMemoryImplRepository extends ClubRepository {\r\n\r\n  getAllClubs(): Observable<ClubModel[]> {\r\n    return of(CLUBS);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { ClubRepository } from '../../domain/repositories/club.repository';\nimport { Injectable } from '@angular/core';\nimport { ClubModel } from '../../domain/models/club.model';\nimport { Observable, of } from 'rxjs';\nimport { CLUBS_MOCK } from '../mocks/CLUBS_MOCK';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ClubInMemoryImplRepository extends ClubRepository {\n  getAllClubs(): Observable<ClubModel[]> {\n    return of(CLUBS_MOCK);\n  }\n}\n",
             "extends": "ClubRepository",
             "type": "injectable"
         }
@@ -506,7 +506,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-bfcd50eb5e4c57bd9d0936546acf513f676864453dde5e36a67e6424528f649f00eda29c94fe3b42cdaade630b62898c301b8e1cc6a0af7036de54b979875d89",
+            "id": "component-AppComponent-85a7b6ff1b5ec7956664b35c290bca069050ad10644dd5a57dc32d94c140349763bb6f20b6f0f701fc66328df68f38e8cfda7c16cd7eb0ba85a6ee7527951317",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -527,13 +527,14 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "clubList$",
+                    "name": "avatar",
+                    "defaultValue": "faker.image.avatar()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Observable<ClubModel[]>",
+                    "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 10
                 }
             ],
             "methodsClass": [
@@ -543,7 +544,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 20,
+                    "line": 14,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -557,7 +558,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, OnInit} from '@angular/core';\nimport {Store} from \"@ngrx/store\";\nimport {AppState, getClubList} from \"../core/features/club/presentation/store/selectors\";\nimport {Observable} from \"rxjs\";\nimport {ClubModel} from \"../core/features/club/domain/models/club.model\";\nimport {fetchClubs} from \"../core/features/club/presentation/store/actions\";\n\n@Component({\n  selector: 'mtun-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent implements OnInit {\n  clubList$: Observable<ClubModel[]>;\n\n  constructor(private store: Store<AppState>) {\n    this.clubList$ = store.select(getClubList);\n  }\n\n  ngOnInit(): void {\n    this.store.dispatch(fetchClubs());\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { faker } from '@faker-js/faker';\n\n@Component({\n  selector: 'mtun-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit {\n  avatar = faker.image.avatar();\n\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -571,31 +572,77 @@
                 "description": "",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "store",
-                        "type": "Store<AppState>",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 14,
-                "jsdoctags": [
-                    {
-                        "name": "store",
-                        "type": "Store<AppState>",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
+                "args": [],
+                "line": 10
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<pre>{{ (clubList$ | async) | json }}</pre>\n<h1 class=\"text-3xl font-bold underline text-red-500\">\n  Hello world!\n</h1>\n\n<mtun-button color='primary'>Button</mtun-button>\n<mtun-button>Button</mtun-button>\n"
+            "templateData": "<div class=\"bg-slate-50 flex h-full flex-col\">\r\n  <mtun-header logo=\"https://fakeimg.pl/250x100/\">\r\n    <mtun-avatar [img]=\"avatar\" alt=\"avatar image\"></mtun-avatar>\r\n  </mtun-header>\r\n</div>\r\n"
+        },
+        {
+            "name": "AvatarComponent",
+            "id": "component-AvatarComponent-00ab633e35217fbbde610bd74808db173409ff37d9a3ef123c1ceb86c88c62c21e7aa5d5a26a750a1a0d0c2351c9f8a15132f3df3f533eed609a513d7d0678d6",
+            "file": "src/ui/components/avatar/avatar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mtun-avatar",
+            "styleUrls": [
+                "./avatar.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./avatar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "alt",
+                    "defaultValue": "'avatar image'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "required": true,
+                    "name": "img",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "optional": false,
+                    "line": 9,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'mtun-avatar',\n  templateUrl: './avatar.component.html',\n  styleUrls: ['./avatar.component.scss'],\n})\nexport class AvatarComponent {\n  @Input({ required: true }) img: string = '';\n  @Input() alt: string = 'avatar image';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./avatar.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<img class=\"rounded-full w-10 h-10\" [attr.src]=\"img\" [attr.alt]=\"alt\"/>\n"
         },
         {
             "name": "ButtonComponent",
@@ -642,12 +689,65 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": ":host {\r\n  button {\r\n    @apply text-lg rounded-xl px-4 py-2 mx-6 my-4 text-white shadow-xl border-slate-400/50 border-2;\r\n  }\r\n}\r\n",
                     "styleUrl": "./button.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<button\n  class='text-lg rounded-xl px-4 py-2 mx-6 my-4 text-white shadow-xl border-slate-400/50 border-2'\n  [ngClass]=\"color === 'primary' ? 'bg-blue-700 hover:bg-blue-800' : 'bg-slate-500 hover:bg-slate-600'\"\n>\n  <ng-content></ng-content>\n</button>\n"
+            "templateData": "<button\n  [ngClass]=\"color === 'primary' ? 'bg-primary-500 hover:bg-primary-700' : 'bg-gray-500 hover:bg-gray-600'\"\n>\n  <ng-content></ng-content>\n</button>\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-3f6a816f68c1635421af93d1f74d88db77e411660d57f6551af549978122f003a0d17c0c15eeab9b8e6f4ecc97e12763c4c16eda0353d805bfcfbed5a52033ed",
+            "file": "src/ui/components/header/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mtun-header",
+            "styleUrls": [
+                "./header.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./header.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "logo",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'mtun-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss'],\n})\nexport class HeaderComponent {\n  @Input() logo: string = '';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\r\n",
+                    "styleUrl": "./header.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"bg-white flex justify-between items-center px-4 py-2\">\n  <img class=\"max-h-16\" [attr.src]=\"logo\" alt=\"brand logo image\">\n  <div class=\"action-content\">\n    <ng-content></ng-content>\n  </div>\n</div>\n"
         }
     ],
     "modules": [
@@ -779,13 +879,13 @@
         },
         {
             "name": "FontawesomeModule",
-            "id": "module-FontawesomeModule-3ead19c1686591c6f0e7867af7a98c56031b97d7a4c68768e92a277e1000f06428d9ae2ed778aebeb36e8b28d643ef97594a4d810af8c6edbf2a6c07ff446602",
+            "id": "module-FontawesomeModule-911a240bacd22f361baf18d0fe227870273d463921f1be67750fbf6128c8fc0b76dbb634e546024c42032e052134d353d4d420666a32b5ddb3e05b91fdee1e99",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/ui/fontawesome.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport {\n  FontAwesomeModule,\n  FaIconLibrary,\n} from '@fortawesome/angular-fontawesome';\nimport { faCoffee } from '@fortawesome/free-solid-svg-icons';\n\n@NgModule({\n  declarations: [],\n  imports: [BrowserModule, FontAwesomeModule],\n})\nexport class FontawesomeModule {\n  constructor(library: FaIconLibrary) {\n    // Add an icon to the library for convenient access in other components\n    library.addIcons(faCoffee);\n  }\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport {\r\n  FontAwesomeModule,\r\n  FaIconLibrary,\r\n} from '@fortawesome/angular-fontawesome';\r\nimport { faCoffee } from '@fortawesome/free-solid-svg-icons';\r\n\r\n@NgModule({\r\n  declarations: [],\r\n  imports: [BrowserModule, FontAwesomeModule],\r\n})\r\nexport class FontawesomeModule {\r\n  constructor(library: FaIconLibrary) {\r\n    // Add an icon to the library for convenient access in other components\r\n    library.addIcons(faCoffee);\r\n  }\r\n}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -815,13 +915,13 @@
         },
         {
             "name": "UiModule",
-            "id": "module-UiModule-b2e58b4906882cfc330f5b6c67c4b3e4558904853a9f7e58d8060e5e9a705d942cef413e6c249cf6de7c53b0bda43fb81278dd74cafcea3e799957ffd6fffe17",
+            "id": "module-UiModule-051b7b196ce7188f7ca7dd61a3e622ea5c76c1be833e81194feaab0fe67230d91674bcca735e4f72ac8aa1c0b50a6e70b0e317ee45269ef528debe1ac75d8f78",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/ui/ui.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FontawesomeModule } from './fontawesome.module';\nimport { ButtonComponent } from './components/button/button.component';\n\n@NgModule({\n  declarations: [ButtonComponent],\n  imports: [CommonModule, FontawesomeModule],\n  exports: [ButtonComponent],\n})\nexport class UiModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule, NgOptimizedImage } from '@angular/common';\nimport { FontawesomeModule } from './fontawesome.module';\nimport { ButtonComponent } from './components/button/button.component';\nimport { HeaderComponent } from './components/header/header.component';\nimport { AvatarComponent } from './components/avatar/avatar.component';\n\n@NgModule({\n  declarations: [ButtonComponent, HeaderComponent, AvatarComponent],\n  imports: [CommonModule, FontawesomeModule, NgOptimizedImage],\n  exports: [ButtonComponent, HeaderComponent, AvatarComponent],\n})\nexport class UiModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -831,7 +931,13 @@
                     "type": "declarations",
                     "elements": [
                         {
+                            "name": "AvatarComponent"
+                        },
+                        {
                             "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "HeaderComponent"
                         }
                     ]
                 },
@@ -840,6 +946,9 @@
                     "elements": [
                         {
                             "name": "FontawesomeModule"
+                        },
+                        {
+                            "name": "NgOptimizedImage"
                         }
                     ]
                 },
@@ -847,7 +956,13 @@
                     "type": "exports",
                     "elements": [
                         {
+                            "name": "AvatarComponent"
+                        },
+                        {
                             "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "HeaderComponent"
                         }
                     ]
                 },
@@ -865,6 +980,16 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "Basic",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/ui/components/avatar/avatar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    img: faker.image.avatar(),\n  },\n}"
+            },
+            {
                 "name": "clubFeature",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -875,14 +1000,14 @@
                 "defaultValue": "createReducer(\r\n  initialClubState,\r\n  on(\r\n    fromActions.fetchClubs,\r\n    (state) => ({ ...state, isLoading: true, isLoaded: false })\r\n  ),\r\n  on(\r\n    fromActions.fetchClubsSuccess,\r\n    (state, { clubs }) => ({ ...state, clubs, isLoading: false, isLoaded: true })\r\n  ),\r\n  on(\r\n    fromActions.fetchClubsFailed,\r\n    (state, { errors }) => ({ ...state, errors, isLoading: false, isLoaded: false })\r\n  ),\r\n)"
             },
             {
-                "name": "CLUBS",
+                "name": "CLUBS_MOCK",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/core/features/club/data/mocks/clubs.ts",
+                "file": "src/core/features/club/data/mocks/CLUBS_MOCK.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ClubModel[]",
-                "defaultValue": "[\r\n  { id: '1', name: \"club 1\" },\r\n  { id: '2', name: \"club 2\" },\r\n  { id: '3', name: \"club 3\" }\r\n]"
+                "defaultValue": "[\n  { id: '1', name: 'club 1' },\n  { id: '2', name: 'club 2' },\n  { id: '3', name: 'club 3' },\n]"
             },
             {
                 "name": "fetchClubs",
@@ -958,11 +1083,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/ui/components/avatar/avatar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AvatarComponent>",
+                "defaultValue": "{\n  title: 'Ui/Avatar',\n  component: AvatarComponent,\n  tags: ['autodocs'],\n  render: (args: AvatarComponent) => ({\n    props: {\n      ...args,\n    },\n  }),\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/ui/components/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  title: 'Example/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  render: (args: ButtonComponent) => ({\n    props: {\n      color: 'primary',\n      content: 'test button',\n      ...args,\n    },\n    template: '<mtun-button [color]=\"color\">Button</mtun-button>',\n  }),\n}"
+                "defaultValue": "{\n  title: 'Ui/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  render: (args: ButtonComponent) => ({\n    props: {\n      color: 'primary',\n      content: 'test button',\n      ...args,\n    },\n    template: '<mtun-button [color]=\"color\">Button</mtun-button>',\n  }),\n}"
             },
             {
                 "name": "preview",
@@ -972,7 +1107,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Preview",
-                "defaultValue": "{\n  parameters: {\n    actions: { argTypesRegex: '^on[A-Z].*' },\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/,\n      },\n    },\n  },\n}"
+                "defaultValue": "{\r\n  parameters: {\r\n    actions: { argTypesRegex: '^on[A-Z].*' },\r\n    controls: {\r\n      matchers: {\r\n        color: /(background|color)$/i,\r\n        date: /Date$/,\r\n      },\r\n    },\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -1001,6 +1136,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<AvatarComponent>",
+                "file": "src/ui/components/avatar/avatar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<ButtonComponent>",
                 "file": "src/ui/components/button/button.stories.ts",
                 "deprecated": false,
@@ -1011,6 +1157,28 @@
         ],
         "enumerations": [],
         "groupedVariables": {
+            "src/ui/components/avatar/avatar.stories.ts": [
+                {
+                    "name": "Basic",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/ui/components/avatar/avatar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    img: faker.image.avatar(),\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/ui/components/avatar/avatar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<AvatarComponent>",
+                    "defaultValue": "{\n  title: 'Ui/Avatar',\n  component: AvatarComponent,\n  tags: ['autodocs'],\n  render: (args: AvatarComponent) => ({\n    props: {\n      ...args,\n    },\n  }),\n}"
+                }
+            ],
             "src/core/features/club/presentation/store/reducer.ts": [
                 {
                     "name": "clubFeature",
@@ -1033,16 +1201,16 @@
                     "defaultValue": "{\r\n  clubs: [],\r\n  isLoading: false,\r\n  isLoaded: false,\r\n  errors: null,\r\n}"
                 }
             ],
-            "src/core/features/club/data/mocks/clubs.ts": [
+            "src/core/features/club/data/mocks/CLUBS_MOCK.ts": [
                 {
-                    "name": "CLUBS",
+                    "name": "CLUBS_MOCK",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/core/features/club/data/mocks/clubs.ts",
+                    "file": "src/core/features/club/data/mocks/CLUBS_MOCK.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ClubModel[]",
-                    "defaultValue": "[\r\n  { id: '1', name: \"club 1\" },\r\n  { id: '2', name: \"club 2\" },\r\n  { id: '3', name: \"club 3\" }\r\n]"
+                    "defaultValue": "[\n  { id: '1', name: 'club 1' },\n  { id: '2', name: 'club 2' },\n  { id: '3', name: 'club 3' },\n]"
                 }
             ],
             "src/core/features/club/presentation/store/actions.ts": [
@@ -1130,7 +1298,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ButtonComponent>",
-                    "defaultValue": "{\n  title: 'Example/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  render: (args: ButtonComponent) => ({\n    props: {\n      color: 'primary',\n      content: 'test button',\n      ...args,\n    },\n    template: '<mtun-button [color]=\"color\">Button</mtun-button>',\n  }),\n}"
+                    "defaultValue": "{\n  title: 'Ui/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  render: (args: ButtonComponent) => ({\n    props: {\n      color: 'primary',\n      content: 'test button',\n      ...args,\n    },\n    template: '<mtun-button [color]=\"color\">Button</mtun-button>',\n  }),\n}"
                 },
                 {
                     "name": "Primary",
@@ -1152,13 +1320,26 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Preview",
-                    "defaultValue": "{\n  parameters: {\n    actions: { argTypesRegex: '^on[A-Z].*' },\n    controls: {\n      matchers: {\n        color: /(background|color)$/i,\n        date: /Date$/,\n      },\n    },\n  },\n}"
+                    "defaultValue": "{\r\n  parameters: {\r\n    actions: { argTypesRegex: '^on[A-Z].*' },\r\n    controls: {\r\n      matchers: {\r\n        color: /(background|color)$/i,\r\n        date: /Date$/,\r\n      },\r\n    },\r\n  },\r\n}"
                 }
             ]
         },
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
+            "src/ui/components/avatar/avatar.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<AvatarComponent>",
+                    "file": "src/ui/components/avatar/avatar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
             "src/ui/components/button/button.stories.ts": [
                 {
                     "name": "Story",
@@ -1212,11 +1393,11 @@
                 "status": "low"
             },
             {
-                "filePath": "src/core/features/club/data/mocks/clubs.ts",
+                "filePath": "src/core/features/club/data/mocks/CLUBS_MOCK.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "CLUBS",
+                "name": "CLUBS_MOCK",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -1411,6 +1592,35 @@
                 "status": "low"
             },
             {
+                "filePath": "src/ui/components/avatar/avatar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AvatarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/ui/components/avatar/avatar.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Basic",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/ui/components/avatar/avatar.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/ui/components/button/button.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -1437,6 +1647,15 @@
                 "name": "Primary",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/ui/components/header/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
                 "status": "low"
             }
         ]

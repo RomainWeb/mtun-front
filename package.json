@@ -38,6 +38,7 @@
     "@angular/cli": "~16.1.5",
     "@angular/compiler-cli": "^16.1.0",
     "@compodoc/compodoc": "1.1.21",
+    "@faker-js/faker": "^8.0.2",
     "@storybook/addon-docs": "7.1.1",
     "@storybook/addon-essentials": "7.1.1",
     "@storybook/addon-interactions": "7.1.1",
@@ -59,7 +60,13 @@
   "jest": {
     "preset": "jest-preset-angular",
     "collectCoverage": true,
-    "coverageReporters": ["json", "html", "text"],
-    "setupFilesAfterEnv": ["<rootDir>/setup-jest.ts"]
+    "coverageReporters": [
+      "json",
+      "html",
+      "text"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup-jest.ts"
+    ]
   }
 }

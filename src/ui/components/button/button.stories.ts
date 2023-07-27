@@ -3,7 +3,7 @@ import { ButtonComponent } from './button.component';
 
 // More on how to set up stories at: https://storybook.js.org/docs/angular/writing-stories/introduction
 const meta: Meta<ButtonComponent> = {
-  title: 'Example/Button',
+  title: 'Ui/Button',
   component: ButtonComponent,
   tags: ['autodocs'],
   render: (args: ButtonComponent) => ({
