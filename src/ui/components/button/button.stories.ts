@@ -10,9 +10,13 @@ const meta: Meta<ButtonComponent> = {
     props: {
       color: 'primary',
       content: 'test button',
+      size: 'base',
+      type: 'raised',
+      isRounded: true,
       ...args,
     },
-    template: '<mtun-button [color]="color">Button</mtun-button>',
+    template:
+      '<mtun-button [color]="color" [size]="size" [type]="type" [isRounded]="isRounded">Button</mtun-button>',
   }),
 };
 

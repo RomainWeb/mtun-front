@@ -1,5 +1,4 @@
-<button
-  [ngClass]="color === 'primary' ? 'bg-primary-500 hover:bg-primary-700' : 'bg-gray-500 hover:bg-gray-600'"
->
+<button [ngClass]="[color, size, type, {'rounded': isRounded}]">
   <ng-content></ng-content>
+  {{ isRounded | json }}
 </button>

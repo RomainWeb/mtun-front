@@ -7,5 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   @Input()
-  color?: string; // Add color param
+  color?: 'primary' | 'secondary' | 'danger' = 'primary';
+  @Input()
+  size?: 'extra-small' | 'small' | 'base' | 'large' | 'extra-large' = 'base';
+  @Input()
+  type?: 'basic' | 'raised' | 'stroked' | 'flat' = 'raised';
+  @Input()
+  isRounded?: boolean = true;
 }
