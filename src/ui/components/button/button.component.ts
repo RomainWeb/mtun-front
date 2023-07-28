@@ -11,7 +11,11 @@ export class ButtonComponent {
   @Input()
   size?: 'extra-small' | 'small' | 'base' | 'large' | 'extra-large' = 'base';
   @Input()
-  type?: 'basic' | 'raised' | 'stroked' | 'flat' = 'raised';
+  style?: 'basic' | 'raised' | 'stroked' | 'flat' = 'raised';
+  @Input()
+  type?: 'button' | 'submit' | 'reset' = 'button';
   @Input()
   isRounded?: boolean = true;
+  @Input()
+  isDisabled?: boolean = false;
 }

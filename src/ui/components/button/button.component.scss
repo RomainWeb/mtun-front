@@ -1,16 +1,87 @@
 :host {
   button {
-    @apply font-normal border-slate-400/50 border-2 font-avenir;
+    @apply font-normal font-avenir;
 
-    &.primary {
-      @apply bg-primary-500 hover:bg-primary-700 focus:ring-2 focus:ring-primary-600;
+    // TYPES
+    &.basic {
+      &.primary:not(.disabled) {
+        @apply text-primary-500 hover:bg-primary-100/30 focus:ring-1 focus:ring-primary-500;
+      }
+
+      &.secondary:not(.disabled) {
+        @apply text-secondary-500 hover:bg-secondary-300/30 focus:ring-1 focus:ring-secondary-500;
+      }
+
+      &.danger:not(.disabled) {
+        @apply text-red-500 hover:bg-red-300/30 focus:ring-1 focus:ring-red-500;
+      }
+
+      &.disabled {
+        @apply text-slate-400;
+      }
+    }
+
+    &.stroked {
+      @apply bg-white;
+
+      &.primary:not(.disabled) {
+        @apply text-primary-500 hover:bg-primary-100/30 focus:ring-1 focus:ring-primary-500 border;
+      }
+
+      &.secondary:not(.disabled) {
+        @apply text-secondary-500 hover:bg-secondary-300/30 focus:ring-1 focus:ring-secondary-500 border;
+      }
+
+      &.danger:not(.disabled) {
+        @apply text-red-500 hover:bg-red-300/30 focus:ring-1 focus:ring-red-500 border;
+      }
+
+      &.disabled {
+        @apply text-slate-400 border border-slate-400;
+      }
+    }
+
+    &.flat {
+      @apply text-white;
+
+      &.primary:not(.disabled) {
+        @apply bg-primary-500 hover:bg-primary-700 focus:ring-2 focus:ring-primary-600;
+      }
+
+      &.secondary:not(.disabled) {
+        @apply bg-secondary-500 hover:bg-secondary-700 focus:ring-2 focus:ring-secondary-600;
+      }
+
+      &.danger:not(.disabled) {
+        @apply bg-red-500 hover:bg-red-700 focus:ring-2 focus:ring-red-600;
+      }
+
+      &.disabled {
+        @apply text-slate-400 bg-secondary-100;
+      }
     }
 
     &.raised {
-      @apply text-white;
+      @apply text-white drop-shadow;
+
+      &.primary:not(.disabled) {
+        @apply bg-primary-500 hover:bg-primary-700 focus:ring-2 focus:ring-primary-600;
+      }
+
+      &.secondary:not(.disabled) {
+        @apply bg-secondary-500 hover:bg-secondary-700 focus:ring-2 focus:ring-secondary-600;
+      }
+
+      &.danger:not(.disabled) {
+        @apply bg-red-500 hover:bg-red-700 focus:ring-2 focus:ring-red-600;
+      }
+
+      &.disabled {
+        @apply text-slate-400 bg-secondary-100;
+      }
     }
 
-    // SIZE
+    // SIZES
     &.extra-small {
       @apply px-2 py-1 text-xs;
     }

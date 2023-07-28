@@ -11,12 +11,21 @@ const meta: Meta<ButtonComponent> = {
       color: 'primary',
       content: 'test button',
       size: 'base',
-      type: 'raised',
+      style: 'raised',
       isRounded: true,
+      isDisabled: false,
+      type: 'button',
       ...args,
     },
-    template:
-      '<mtun-button [color]="color" [size]="size" [type]="type" [isRounded]="isRounded">Button</mtun-button>',
+    template: `<mtun-button
+        [color]="color"
+        [size]="size"
+        [style]="style"
+        [isRounded]="isRounded"
+        [isDisabled]="isDisabled"
+        [type]="type">
+        Button
+      </mtun-button>`,
   }),
 };
 

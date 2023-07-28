@@ -646,7 +646,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-1bd821814b549c33e4b4893570276c704b17d13fc13a54d365b4a0b179b3d6aa33775f67d2c68f622449b76ec771561a01e53ea029024e838737aac16d837457",
+            "id": "component-ButtonComponent-36ad88a0f379b03184f7a9fb3b645183d8a513c0fe6f7db02c928acdb2d2f688da4bf2f71891ca6203e062ea584ad060e957a0d9bf5b7fc92224f7d1fe77f7ed",
             "file": "src/ui/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -674,11 +674,20 @@
                     "decorators": []
                 },
                 {
+                    "name": "isDisabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
                     "name": "isRounded",
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 18,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -692,12 +701,21 @@
                     "decorators": []
                 },
                 {
-                    "name": "type",
+                    "name": "style",
                     "defaultValue": "'raised'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 14,
                     "type": "\"basic\" | \"raised\" | \"stroked\" | \"flat\"",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "\"button\" | \"submit\" | \"reset\"",
                     "decorators": []
                 }
             ],
@@ -713,16 +731,16 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'mtun-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent {\n  @Input()\n  color?: 'primary' | 'secondary' | 'danger' = 'primary';\n  @Input()\n  size?: 'extra-small' | 'small' | 'base' | 'large' | 'extra-large' = 'base';\n  @Input()\n  type?: 'basic' | 'raised' | 'stroked' | 'flat' = 'raised';\n  @Input()\n  isRounded?: boolean = true;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'mtun-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent {\n  @Input()\n  color?: 'primary' | 'secondary' | 'danger' = 'primary';\n  @Input()\n  size?: 'extra-small' | 'small' | 'base' | 'large' | 'extra-large' = 'base';\n  @Input()\n  style?: 'basic' | 'raised' | 'stroked' | 'flat' = 'raised';\n  @Input()\n  type?: 'button' | 'submit' | 'reset' = 'button';\n  @Input()\n  isRounded?: boolean = true;\n  @Input()\n  isDisabled?: boolean = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\r\n  button {\r\n    @apply font-normal border-slate-400/50 border-2 font-avenir;\r\n\r\n    &.primary {\r\n      @apply bg-primary-500 hover:bg-primary-700 focus:ring-2 focus:ring-primary-600;\r\n    }\r\n\r\n    &.raised {\r\n      @apply text-white;\r\n    }\r\n\r\n    // SIZE\r\n    &.extra-small {\r\n      @apply px-2 py-1 text-xs;\r\n    }\r\n\r\n    &.small {\r\n      @apply px-3 py-2 text-sm;\r\n    }\r\n\r\n    &.base {\r\n      @apply px-4 py-2 text-lg;\r\n    }\r\n\r\n    &.large {\r\n      @apply px-4 py-2 text-xl;\r\n    }\r\n\r\n    &.extra-large {\r\n      @apply px-5 py-3 text-2xl;\r\n    }\r\n  }\r\n}\r\n",
+                    "data": ":host {\r\n  button {\r\n    @apply font-normal font-avenir;\r\n\r\n    // TYPES\r\n    &.basic {\r\n      &.primary {\r\n        @apply text-primary-500 hover:bg-primary-100/30 focus:ring-1 focus:ring-primary-500;\r\n      }\r\n\r\n      &.secondary {\r\n        @apply text-secondary-500 hover:bg-secondary-300/30 focus:ring-1 focus:ring-secondary-500;\r\n      }\r\n\r\n      &.danger {\r\n        @apply text-red-500 hover:bg-red-300/30 focus:ring-1 focus:ring-red-500;\r\n      }\r\n    }\r\n\r\n    &.stroked {\r\n      @apply bg-white;\r\n\r\n      &.primary {\r\n        @apply text-primary-500 hover:bg-primary-100/30 focus:ring-1 focus:ring-primary-500 border;\r\n      }\r\n\r\n      &.secondary {\r\n        @apply text-secondary-500 hover:bg-secondary-300/30 focus:ring-1 focus:ring-secondary-500 border;\r\n      }\r\n\r\n      &.danger {\r\n        @apply text-red-500 hover:bg-red-300/30 focus:ring-1 focus:ring-red-500 border;\r\n      }\r\n    }\r\n\r\n    &.flat {\r\n      @apply text-white;\r\n\r\n      &.primary {\r\n        @apply bg-primary-500 hover:bg-primary-700 focus:ring-2 focus:ring-primary-600;\r\n      }\r\n\r\n      &.secondary {\r\n        @apply bg-secondary-500 hover:bg-secondary-700 focus:ring-2 focus:ring-secondary-600;\r\n      }\r\n\r\n      &.danger {\r\n        @apply bg-red-500 hover:bg-red-700 focus:ring-2 focus:ring-red-600;\r\n      }\r\n    }\r\n\r\n    &.raised {\r\n      @apply text-white drop-shadow;\r\n\r\n      &.primary {\r\n        @apply bg-primary-500 hover:bg-primary-700 focus:ring-2 focus:ring-primary-600;\r\n      }\r\n\r\n      &.secondary {\r\n        @apply bg-secondary-500 hover:bg-secondary-700 focus:ring-2 focus:ring-secondary-600;\r\n      }\r\n\r\n      &.danger {\r\n        @apply bg-red-500 hover:bg-red-700 focus:ring-2 focus:ring-red-600;\r\n      }\r\n    }\r\n\r\n    // SIZES\r\n    &.extra-small {\r\n      @apply px-2 py-1 text-xs;\r\n    }\r\n\r\n    &.small {\r\n      @apply px-3 py-2 text-sm;\r\n    }\r\n\r\n    &.base {\r\n      @apply px-4 py-2 text-lg;\r\n    }\r\n\r\n    &.large {\r\n      @apply px-4 py-2 text-xl;\r\n    }\r\n\r\n    &.extra-large {\r\n      @apply px-5 py-3 text-2xl;\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./button.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<button [ngClass]=\"[color, size, type, {'rounded-xl': isRounded}]\">\n  <ng-content></ng-content>\n</button>\n"
+            "templateData": "<button\n  [ngClass]=\"[color, size, style]\"\n  [class.rounded-md]=\"isRounded\"\n  [disabled]=\"isDisabled\"\n  [attr.type]=\"type\">\n  <ng-content></ng-content>\n</button>\n"
         },
         {
             "name": "HeaderComponent",
@@ -1125,7 +1143,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  title: 'Ui/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  render: (args: ButtonComponent) => ({\n    props: {\n      color: 'primary',\n      content: 'test button',\n      size: 'base',\n      type: 'raised',\n      isRounded: true,\n      ...args,\n    },\n    template:\n      '<mtun-button [color]=\"color\" [size]=\"size\" [type]=\"type\" [isRounded]=\"isRounded\">Button</mtun-button>',\n  }),\n}"
+                "defaultValue": "{\n  title: 'Ui/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  render: (args: ButtonComponent) => ({\n    props: {\n      color: 'primary',\n      content: 'test button',\n      size: 'base',\n      style: 'raised',\n      isRounded: true,\n      isDisabled: false,\n      type: 'button',\n      ...args,\n    },\n    template: `<mtun-button\n        [color]=\"color\"\n        [size]=\"size\"\n        [style]=\"style\"\n        [isRounded]=\"isRounded\"\n        [isDisabled]=\"isDisabled\"\n        [type]=\"type\">\n        Button\n      </mtun-button>`,\n  }),\n}"
             },
             {
                 "name": "preview",
@@ -1326,7 +1344,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ButtonComponent>",
-                    "defaultValue": "{\n  title: 'Ui/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  render: (args: ButtonComponent) => ({\n    props: {\n      color: 'primary',\n      content: 'test button',\n      size: 'base',\n      type: 'raised',\n      isRounded: true,\n      ...args,\n    },\n    template:\n      '<mtun-button [color]=\"color\" [size]=\"size\" [type]=\"type\" [isRounded]=\"isRounded\">Button</mtun-button>',\n  }),\n}"
+                    "defaultValue": "{\n  title: 'Ui/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  render: (args: ButtonComponent) => ({\n    props: {\n      color: 'primary',\n      content: 'test button',\n      size: 'base',\n      style: 'raised',\n      isRounded: true,\n      isDisabled: false,\n      type: 'button',\n      ...args,\n    },\n    template: `<mtun-button\n        [color]=\"color\"\n        [size]=\"size\"\n        [style]=\"style\"\n        [isRounded]=\"isRounded\"\n        [isDisabled]=\"isDisabled\"\n        [type]=\"type\">\n        Button\n      </mtun-button>`,\n  }),\n}"
                 },
                 {
                     "name": "Primary",
@@ -1654,7 +1672,7 @@
                 "linktype": "component",
                 "name": "ButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
