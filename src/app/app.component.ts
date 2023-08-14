@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faker } from '@faker-js/faker';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'mtun-root',
@@ -11,5 +12,7 @@ export class AppComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    initFlowbite();
+  }
 }
