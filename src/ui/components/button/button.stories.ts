@@ -11,7 +11,7 @@ const meta: Meta<ButtonComponent> = {
       color: 'primary',
       content: 'test button',
       size: 'base',
-      style: 'raised',
+      style: 'flat',
       isRounded: true,
       isDisabled: false,
       type: 'button',
