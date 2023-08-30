@@ -8,19 +8,17 @@ import { ClubInMemoryImplRepository } from '../data/repositories/club-in-memory-
 import { ClubRoutingModule } from './club-routing.module';
 import { ClubListComponent } from './components/club-list/club-list.component';
 
-const getUserProfileUseCaseFactory = (clubRepo: ClubRepository) =>
+const getClubsUseCaseFactory = (clubRepo: ClubRepository) =>
   new GetAllClubsUseCase(clubRepo);
 
 export const fetchClubsUseCaseProvider = {
   provide: GetAllClubsUseCase,
-  useFactory: getUserProfileUseCaseFactory,
+  useFactory: getClubsUseCaseFactory,
   deps: [ClubRepository],
 };
 
 @NgModule({
-  declarations: [
-    ClubListComponent
-  ],
+  declarations: [ClubListComponent],
   providers: [
     fetchClubsUseCaseProvider,
     { provide: ClubRepository, useClass: ClubInMemoryImplRepository },
