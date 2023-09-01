@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { ClubModule } from '../core/club/presentation/club.module';
-import { ClubEffects } from '../core/club/presentation/store/effects';
+import { ClubModule } from '@club/configuration/club.module';
+import { ClubEffects } from '@club/presentation/store/effects';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UiModule } from '../ui/ui.module';
 

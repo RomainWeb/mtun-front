@@ -1,6 +1,7 @@
-import {Observable} from "rxjs";
-import {ClubModel} from "../models/club.model";
+import { Observable } from 'rxjs';
+import { ClubEntity } from '../entities/club.entity';
 
 export abstract class ClubRepository {
-  abstract getAllClubs(): Observable<ClubModel[]>;
+  abstract getAll(): Observable<ClubEntity[]>;
+  abstract getById(id: number): Observable<ClubEntity>;
 }
