@@ -1,28 +1,40 @@
 import { ClubEntity } from '../domain/entities/club.entity';
 
 export class ClubBuilder {
-  club: ClubEntity;
+  private _id!: number;
+  private _name!: string;
+  private _logoUrl!: string;
 
-  constructor() {
-    this.club = new ClubEntity();
-  }
+  constructor() {}
 
   withId(value: number): ClubBuilder {
-    this.club._id = value;
+    this._id = value;
     return this;
   }
 
   withName(value: string): ClubBuilder {
-    this.club._name = value;
+    this._name = value;
     return this;
   }
 
   withLogoUrl(value: string): ClubBuilder {
-    this.club._logoUrl = value;
+    this._logoUrl = value;
     return this;
   }
 
   build(): ClubEntity {
-    return this.club;
+    return new ClubEntity(this);
+  }
+
+  get id(): number {
+    return this._id;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
+  get logoUrl(): string {
+    return this._logoUrl;
   }
 }

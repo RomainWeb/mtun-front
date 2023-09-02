@@ -2,14 +2,10 @@ import { Observable, of } from 'rxjs';
 import { ClubRepository } from '../domain/repositories/club.repository';
 import { ClubEntity } from '../domain/entities/club.entity';
 
-export class ClubHandler implements ClubRepository {
+export class GetAllClubsUseCase {
   constructor(private clubRepository: ClubRepository) {}
 
-  getAll(): Observable<any> {
+  execute(): Observable<ClubEntity[]> {
     return this.clubRepository.getAll();
-  }
-
-  getById(id: number): Observable<ClubEntity> {
-    return this.clubRepository.getById(id);
   }
 }

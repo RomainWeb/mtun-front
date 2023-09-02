@@ -4,6 +4,7 @@ import { ClubEntity } from '@club/domain/entities/club.entity';
 
 export interface ClubState {
   clubs: ClubEntity[];
+  clubDetails: ClubEntity | null;
   isLoading: boolean;
   isLoaded: boolean;
   errors: any;
@@ -11,6 +12,7 @@ export interface ClubState {
 
 const initialClubState: ClubState = {
   clubs: [],
+  clubDetails: null,
   isLoading: false,
   isLoaded: false,
   errors: null,
@@ -29,7 +31,18 @@ export const clubFeature = createReducer(
     isLoading: false,
     isLoaded: true,
   })),
-  on(fromActions.fetchClubsFailed, (state, { errors }) => ({
+  on(fromActions.fetchClubDetails, (state) => ({
+    ...state,
+    isLoading: true,
+    isLoaded: false,
+  })),
+  on(fromActions.fetchClubDetailsSuccess, (state, { club }) => ({
+    ...state,
+    clubDetails: club,
+    isLoading: false,
+    isLoaded: true,
+  })),
+  on(fromActions.fetchClubFailed, (state, { errors }) => ({
     ...state,
     errors,
     isLoading: false,

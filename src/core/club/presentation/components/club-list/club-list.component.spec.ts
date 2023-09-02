@@ -11,6 +11,7 @@ describe('ClubListComponent', () => {
 
   const initialState: ClubState = {
     clubs: [],
+    clubDetails: null,
     isLoading: false,
     isLoaded: false,
     errors: null,

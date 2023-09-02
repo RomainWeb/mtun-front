@@ -1,17 +1,13 @@
+import { ClubBuilder } from '@club/useCases/club.builder';
+
 export class ClubEntity {
-  _id!: number;
-  _name!: string;
-  _logoUrl!: string;
+  id: number;
+  name: string;
+  logoUrl: string;
 
-  get id(): number {
-    return this._id;
-  }
-
-  get name(): string {
-    return this._name;
-  }
-
-  get logoUrl(): string {
-    return this._logoUrl;
+  constructor(builder: ClubBuilder) {
+    this.id = builder.id;
+    this.name = builder.name;
+    this.logoUrl = builder.logoUrl;
   }
 }

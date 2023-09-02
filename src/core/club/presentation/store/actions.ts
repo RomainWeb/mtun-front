@@ -1,14 +1,23 @@
 import { createAction, props } from '@ngrx/store';
 import { ClubEntity } from '@club/domain/entities/club.entity';
 
-export const fetchClubs = createAction('[club] Fetch ClubModel List');
+export const fetchClubs = createAction('[club] fetch club List');
 
 export const fetchClubsSuccess = createAction(
-  '[club] Fetch ClubModel List Success',
+  '[club] Fetch Club List Success',
   props<{ clubs: ClubEntity[] }>()
 );
 
-export const fetchClubsFailed = createAction(
-  '[club] Fetch ClubModel List Failed',
+export const fetchClubDetails = createAction(
+  '[club] fetch club details',
+  props<{ clubId: number }>()
+);
+export const fetchClubDetailsSuccess = createAction(
+  '[club] fetch club details success',
+  props<{ club: ClubEntity }>()
+);
+
+export const fetchClubFailed = createAction(
+  '[club] Fetch Club List Failed',
   props<{ errors: any }>()
 );

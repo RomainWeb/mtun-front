@@ -5,28 +5,38 @@ import { clubFeature } from '../presentation/store/reducer';
 import { ClubRoutingModule } from './club-routing.module';
 import { ClubListComponent } from '../presentation/components/club-list/club-list.component';
 import { ClubRepository } from '@club/domain/repositories/club.repository';
-import { InMemoryClubImpl } from '@club/adapters/secondaries/inMemoryClubImpl';
-import { ClubHandler } from '@club/useCases/club.handler';
+import { InMemoryClubAdapter } from '@club/data/adapters/inMemoryClub.adapter';
+import { GetAllClubsUseCase } from '@club/useCases/getAllClubs.useCase';
+import { EffectsModule } from '@ngrx/effects';
+import { ClubEffects } from '@club/presentation/store/effects';
+import { GetClubDetailsUseCase } from '@club/useCases/getClubDetails.useCase';
 
-const clubHandlerFactory = (clubRepository: ClubRepository) =>
-  new ClubHandler(clubRepository);
+const getAllClubsUseCaseFactory = (clubRepository: ClubRepository) =>
+  new GetAllClubsUseCase(clubRepository);
 
-const clubHandlerProvider = {
-  provide: ClubHandler,
-  useFactory: clubHandlerFactory,
-  deps: [ClubRepository],
-};
+const getClubDetailsUseCaseFactory = (clubRepository: ClubRepository) =>
+  new GetClubDetailsUseCase(clubRepository);
 
 @NgModule({
   declarations: [ClubListComponent],
   providers: [
-    clubHandlerProvider,
-    { provide: ClubRepository, useClass: InMemoryClubImpl },
+    { provide: ClubRepository, useClass: InMemoryClubAdapter },
+    {
+      provide: GetAllClubsUseCase,
+      useFactory: getAllClubsUseCaseFactory,
+      deps: [ClubRepository],
+    },
+    {
+      provide: GetClubDetailsUseCase,
+      useFactory: getClubDetailsUseCaseFactory,
+      deps: [ClubRepository],
+    },
   ],
   imports: [
     CommonModule,
     ClubRoutingModule,
     StoreModule.forFeature('club', clubFeature),
+    EffectsModule.forFeature([ClubEffects]),
   ],
   exports: [ClubListComponent],
 })
