@@ -11,7 +11,7 @@ export class ButtonComponent {
   @Input()
   size?: 'extra-small' | 'small' | 'base' | 'large' | 'extra-large' = 'base';
   @Input()
-  style?: 'basic' | 'raised' | 'stroked' | 'flat' = 'raised';
+  style?: 'basic' | 'raised' | 'stroked' | 'flat' = 'flat';
   @Input()
   type?: 'button' | 'submit' | 'reset' = 'button';
   @Input()

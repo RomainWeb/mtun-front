@@ -310,63 +310,6 @@
             "hostListeners": []
         },
         {
-            "name": "ClubVM",
-            "id": "class-ClubVM-6776753cf723f11afb1ed8fc4cc5176882e84f25e60ce734085dac818eafa2bed630a1609948099cf672fd19d97e2dabddc5ed6f051d02a002ed3d13ce882fe9",
-            "file": "src/core/features/club/presentation/models/clubVM.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "class",
-            "sourceCode": "export class ClubVM {\r\n  constructor(id: string, name: string) {\r\n  }\r\n}\r\n",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "id",
-                        "type": "string",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "name",
-                        "type": "string",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 1,
-                "jsdoctags": [
-                    {
-                        "name": "id",
-                        "type": "string",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "name",
-                        "type": "string",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "properties": [],
-            "methods": [],
-            "indexSignatures": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "hostBindings": [],
-            "hostListeners": []
-        },
-        {
             "name": "GetAllClubsUseCase",
             "id": "class-GetAllClubsUseCase-f8df12bb515d24de3f982963adacbdc63182460fab525c350ec424ee3fca4075fc7253bab86234e4bebe28ae377ef161cf321fac290ad635231289081918de56",
             "file": "src/core/features/club/domain/usecases/get-all-clubs.usecase.ts",
@@ -502,11 +445,281 @@
             "hostListeners": []
         }
     ],
-    "directives": [],
+    "directives": [
+        {
+            "name": "InputDirective",
+            "id": "directive-InputDirective-fa613a97c3a4d5606af1a7308ea295c7547bfe478253519a877f96957ad9a8086cd62345d54017b4fd5249367ff15363b3ff0a891b3fa46c51a5c01ae3192658",
+            "file": "src/ui/components/input/input.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, HostBinding, Input } from '@angular/core';\nimport { UiComponentSize } from '../types/component-size.type';\nimport { Subject } from 'rxjs';\nimport { UiComponentStatus } from '../types/component-status.type';\n\n@Directive({\n  selector: 'input[UiInput], textarea[UiInput]',\n})\nexport class InputDirective {\n  protected destroy$ = new Subject<void>();\n\n  @Input() fieldSize: UiComponentSize = 'medium';\n  @Input() status: UiComponentStatus = 'basic';\n\n  constructor() {}\n\n  // SIZE\n  @HostBinding('class.size-tiny')\n  get tiny() {\n    return this.fieldSize === 'tiny';\n  }\n\n  @HostBinding('class.size-small')\n  get small() {\n    return this.fieldSize === 'small';\n  }\n\n  @HostBinding('class.size-medium')\n  get medium() {\n    return this.fieldSize === 'medium';\n  }\n\n  @HostBinding('class.size-large')\n  get large() {\n    return this.fieldSize === 'large';\n  }\n\n  @HostBinding('class.size-giant')\n  get giant() {\n    return this.fieldSize === 'giant';\n  }\n\n  // STATUS\n  @HostBinding('class.status-primary')\n  get primary() {\n    return this.status === 'primary';\n  }\n\n  @HostBinding('class.status-info')\n  get info() {\n    return this.status === 'info';\n  }\n\n  @HostBinding('class.status-success')\n  get success() {\n    return this.status === 'success';\n  }\n\n  @HostBinding('class.status-warning')\n  get warning() {\n    return this.status === 'warning';\n  }\n\n  @HostBinding('class.status-danger')\n  get danger() {\n    return this.status === 'danger';\n  }\n\n  @HostBinding('class.status-basic')\n  get basic() {\n    return this.status === 'basic';\n  }\n\n  @HostBinding('class.status-control')\n  get control() {\n    return this.status === 'control';\n  }\n}\n",
+            "selector": "input[UiInput], textarea[UiInput]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [
+                {
+                    "name": "fieldSize",
+                    "defaultValue": "'medium'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "UiComponentSize",
+                    "decorators": []
+                },
+                {
+                    "name": "status",
+                    "defaultValue": "'basic'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "UiComponentStatus",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class.size-giant",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 39,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "class.size-large",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "class.size-medium",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "class.size-small",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "class.size-tiny",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "class.status-basic",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 70,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "class.status-control",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 75,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "class.status-danger",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 65,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "class.status-info",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 50,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "class.status-primary",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "class.status-success",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 55,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "class.status-warning",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 60,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "destroy$",
+                    "defaultValue": "new Subject<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "modifierKind": [
+                        122
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 13
+            },
+            "accessors": {
+                "tiny": {
+                    "name": "tiny",
+                    "getSignature": {
+                        "name": "tiny",
+                        "type": "",
+                        "returnType": "",
+                        "line": 19
+                    }
+                },
+                "small": {
+                    "name": "small",
+                    "getSignature": {
+                        "name": "small",
+                        "type": "",
+                        "returnType": "",
+                        "line": 24
+                    }
+                },
+                "medium": {
+                    "name": "medium",
+                    "getSignature": {
+                        "name": "medium",
+                        "type": "",
+                        "returnType": "",
+                        "line": 29
+                    }
+                },
+                "large": {
+                    "name": "large",
+                    "getSignature": {
+                        "name": "large",
+                        "type": "",
+                        "returnType": "",
+                        "line": 34
+                    }
+                },
+                "giant": {
+                    "name": "giant",
+                    "getSignature": {
+                        "name": "giant",
+                        "type": "",
+                        "returnType": "",
+                        "line": 39
+                    }
+                },
+                "primary": {
+                    "name": "primary",
+                    "getSignature": {
+                        "name": "primary",
+                        "type": "",
+                        "returnType": "",
+                        "line": 45
+                    }
+                },
+                "info": {
+                    "name": "info",
+                    "getSignature": {
+                        "name": "info",
+                        "type": "",
+                        "returnType": "",
+                        "line": 50
+                    }
+                },
+                "success": {
+                    "name": "success",
+                    "getSignature": {
+                        "name": "success",
+                        "type": "",
+                        "returnType": "",
+                        "line": 55
+                    }
+                },
+                "warning": {
+                    "name": "warning",
+                    "getSignature": {
+                        "name": "warning",
+                        "type": "",
+                        "returnType": "",
+                        "line": 60
+                    }
+                },
+                "danger": {
+                    "name": "danger",
+                    "getSignature": {
+                        "name": "danger",
+                        "type": "",
+                        "returnType": "",
+                        "line": 65
+                    }
+                },
+                "basic": {
+                    "name": "basic",
+                    "getSignature": {
+                        "name": "basic",
+                        "type": "",
+                        "returnType": "",
+                        "line": 70
+                    }
+                },
+                "control": {
+                    "name": "control",
+                    "getSignature": {
+                        "name": "control",
+                        "type": "",
+                        "returnType": "",
+                        "line": 75
+                    }
+                }
+            }
+        }
+    ],
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-85a7b6ff1b5ec7956664b35c290bca069050ad10644dd5a57dc32d94c140349763bb6f20b6f0f701fc66328df68f38e8cfda7c16cd7eb0ba85a6ee7527951317",
+            "id": "component-AppComponent-2b8b8ff48831707f219af6a2c21647066bef25a7ace414473cf314f3d9e72e2613aeada9f191eb57ba3e65a9445c2b674bc599fbe79298216037246c9d3c402c",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -534,7 +747,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 10
+                    "line": 11
                 }
             ],
             "methodsClass": [
@@ -544,7 +757,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 14,
+                    "line": 15,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -558,11 +771,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { faker } from '@faker-js/faker';\n\n@Component({\n  selector: 'mtun-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit {\n  avatar = faker.image.avatar();\n\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { faker } from '@faker-js/faker';\r\nimport { initFlowbite } from 'flowbite';\r\n\r\n@Component({\r\n  selector: 'mtun-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss'],\r\n})\r\nexport class AppComponent implements OnInit {\r\n  avatar = faker.image.avatar();\r\n\r\n  constructor() {}\r\n\r\n  ngOnInit(): void {\r\n    initFlowbite();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": ":host {\r\n\r\n}\r\n",
                     "styleUrl": "./app.component.scss"
                 }
             ],
@@ -573,12 +786,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 10
+                "line": 11
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"bg-slate-50 flex h-full flex-col\">\r\n  <mtun-header logo=\"https://fakeimg.pl/250x100/\">\r\n    <mtun-avatar [img]=\"avatar\" alt=\"avatar image\"></mtun-avatar>\r\n  </mtun-header>\r\n</div>\r\n"
+            "templateData": "<div class=\"bg-slate-50 flex h-full flex-col\">\r\n  <mtun-header logo=\"https://fakeimg.pl/250x100/\">\r\n    <mtun-avatar [img]=\"avatar\" alt=\"avatar image\"></mtun-avatar>\r\n  </mtun-header>\r\n  <div class=\"container mx-auto p-4\">\r\n    <input UiInput placeholder=\"text here\" />\r\n    <router-outlet></router-outlet>\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "AvatarComponent",
@@ -646,7 +859,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-36ad88a0f379b03184f7a9fb3b645183d8a513c0fe6f7db02c928acdb2d2f688da4bf2f71891ca6203e062ea584ad060e957a0d9bf5b7fc92224f7d1fe77f7ed",
+            "id": "component-ButtonComponent-d7929566a0a270ab5fc71954b3c3bb07dd4b2570941916ef249c1418b10009f2b2c6ca4e5bc028408685a5d991d197e24a508df58ceb4b6f941198460769809e",
             "file": "src/ui/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -702,7 +915,7 @@
                 },
                 {
                     "name": "style",
-                    "defaultValue": "'raised'",
+                    "defaultValue": "'flat'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 14,
@@ -731,16 +944,59 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'mtun-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent {\n  @Input()\n  color?: 'primary' | 'secondary' | 'danger' = 'primary';\n  @Input()\n  size?: 'extra-small' | 'small' | 'base' | 'large' | 'extra-large' = 'base';\n  @Input()\n  style?: 'basic' | 'raised' | 'stroked' | 'flat' = 'raised';\n  @Input()\n  type?: 'button' | 'submit' | 'reset' = 'button';\n  @Input()\n  isRounded?: boolean = true;\n  @Input()\n  isDisabled?: boolean = false;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'mtun-button',\r\n  templateUrl: './button.component.html',\r\n  styleUrls: ['./button.component.scss'],\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  color?: 'primary' | 'secondary' | 'danger' = 'primary';\r\n  @Input()\r\n  size?: 'extra-small' | 'small' | 'base' | 'large' | 'extra-large' = 'base';\r\n  @Input()\r\n  style?: 'basic' | 'raised' | 'stroked' | 'flat' = 'flat';\r\n  @Input()\r\n  type?: 'button' | 'submit' | 'reset' = 'button';\r\n  @Input()\r\n  isRounded?: boolean = true;\r\n  @Input()\r\n  isDisabled?: boolean = false;\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\r\n  button {\r\n    @apply font-normal font-avenir;\r\n\r\n    // TYPES\r\n    &.basic {\r\n      &.primary {\r\n        @apply text-primary-500 hover:bg-primary-100/30 focus:ring-1 focus:ring-primary-500;\r\n      }\r\n\r\n      &.secondary {\r\n        @apply text-secondary-500 hover:bg-secondary-300/30 focus:ring-1 focus:ring-secondary-500;\r\n      }\r\n\r\n      &.danger {\r\n        @apply text-red-500 hover:bg-red-300/30 focus:ring-1 focus:ring-red-500;\r\n      }\r\n    }\r\n\r\n    &.stroked {\r\n      @apply bg-white;\r\n\r\n      &.primary {\r\n        @apply text-primary-500 hover:bg-primary-100/30 focus:ring-1 focus:ring-primary-500 border;\r\n      }\r\n\r\n      &.secondary {\r\n        @apply text-secondary-500 hover:bg-secondary-300/30 focus:ring-1 focus:ring-secondary-500 border;\r\n      }\r\n\r\n      &.danger {\r\n        @apply text-red-500 hover:bg-red-300/30 focus:ring-1 focus:ring-red-500 border;\r\n      }\r\n    }\r\n\r\n    &.flat {\r\n      @apply text-white;\r\n\r\n      &.primary {\r\n        @apply bg-primary-500 hover:bg-primary-700 focus:ring-2 focus:ring-primary-600;\r\n      }\r\n\r\n      &.secondary {\r\n        @apply bg-secondary-500 hover:bg-secondary-700 focus:ring-2 focus:ring-secondary-600;\r\n      }\r\n\r\n      &.danger {\r\n        @apply bg-red-500 hover:bg-red-700 focus:ring-2 focus:ring-red-600;\r\n      }\r\n    }\r\n\r\n    &.raised {\r\n      @apply text-white drop-shadow;\r\n\r\n      &.primary {\r\n        @apply bg-primary-500 hover:bg-primary-700 focus:ring-2 focus:ring-primary-600;\r\n      }\r\n\r\n      &.secondary {\r\n        @apply bg-secondary-500 hover:bg-secondary-700 focus:ring-2 focus:ring-secondary-600;\r\n      }\r\n\r\n      &.danger {\r\n        @apply bg-red-500 hover:bg-red-700 focus:ring-2 focus:ring-red-600;\r\n      }\r\n    }\r\n\r\n    // SIZES\r\n    &.extra-small {\r\n      @apply px-2 py-1 text-xs;\r\n    }\r\n\r\n    &.small {\r\n      @apply px-3 py-2 text-sm;\r\n    }\r\n\r\n    &.base {\r\n      @apply px-4 py-2 text-lg;\r\n    }\r\n\r\n    &.large {\r\n      @apply px-4 py-2 text-xl;\r\n    }\r\n\r\n    &.extra-large {\r\n      @apply px-5 py-3 text-2xl;\r\n    }\r\n  }\r\n}\r\n",
+                    "data": ":host {\r\n  button {\r\n    @apply font-normal font-avenir;\r\n\r\n    // TYPES\r\n    &.basic {\r\n      &.primary:not(.disabled) {\r\n        @apply text-primary-500 hover:bg-primary-100/30 focus:ring-1 focus:ring-primary-500;\r\n      }\r\n\r\n      &.secondary:not(.disabled) {\r\n        @apply text-secondary-500 hover:bg-secondary-300/30 focus:ring-1 focus:ring-secondary-500;\r\n      }\r\n\r\n      &.danger:not(.disabled) {\r\n        @apply text-red-500 hover:bg-red-300/30 focus:ring-1 focus:ring-red-500;\r\n      }\r\n\r\n      &.disabled {\r\n        @apply text-slate-400;\r\n      }\r\n    }\r\n\r\n    &.stroked {\r\n      @apply bg-white;\r\n\r\n      &.primary:not(.disabled) {\r\n        @apply text-primary-500 hover:bg-primary-100/30 focus:ring-1 focus:ring-primary-500 border;\r\n      }\r\n\r\n      &.secondary:not(.disabled) {\r\n        @apply text-secondary-500 hover:bg-secondary-300/30 focus:ring-1 focus:ring-secondary-500 border;\r\n      }\r\n\r\n      &.danger:not(.disabled) {\r\n        @apply text-red-500 hover:bg-red-300/30 focus:ring-1 focus:ring-red-500 border;\r\n      }\r\n\r\n      &.disabled {\r\n        @apply text-slate-400 border border-slate-400;\r\n      }\r\n    }\r\n\r\n    &.flat {\r\n      @apply text-white;\r\n\r\n      &.primary:not(.disabled) {\r\n        @apply bg-primary-500 hover:bg-primary-700 focus:ring-2 focus:ring-primary-600;\r\n      }\r\n\r\n      &.secondary:not(.disabled) {\r\n        @apply bg-secondary-500 hover:bg-secondary-700 focus:ring-2 focus:ring-secondary-600;\r\n      }\r\n\r\n      &.danger:not(.disabled) {\r\n        @apply bg-red-500 hover:bg-red-700 focus:ring-2 focus:ring-red-600;\r\n      }\r\n\r\n      &.disabled {\r\n        @apply text-slate-400 bg-secondary-100;\r\n      }\r\n    }\r\n\r\n    &.raised {\r\n      @apply text-white drop-shadow;\r\n\r\n      &.primary:not(.disabled) {\r\n        @apply bg-primary-500 hover:bg-primary-700 focus:ring-2 focus:ring-primary-600;\r\n      }\r\n\r\n      &.secondary:not(.disabled) {\r\n        @apply bg-secondary-500 hover:bg-secondary-700 focus:ring-2 focus:ring-secondary-600;\r\n      }\r\n\r\n      &.danger:not(.disabled) {\r\n        @apply bg-red-500 hover:bg-red-700 focus:ring-2 focus:ring-red-600;\r\n      }\r\n\r\n      &.disabled {\r\n        @apply text-slate-400 bg-secondary-100;\r\n      }\r\n    }\r\n\r\n    // SIZES\r\n    &.extra-small {\r\n      @apply px-2 py-1 text-xs;\r\n    }\r\n\r\n    &.small {\r\n      @apply px-3 py-2 text-sm;\r\n    }\r\n\r\n    &.base {\r\n      @apply px-4 py-2 text-lg;\r\n    }\r\n\r\n    &.large {\r\n      @apply px-4 py-2 text-xl;\r\n    }\r\n\r\n    &.extra-large {\r\n      @apply px-5 py-3 text-2xl;\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./button.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<button\n  [ngClass]=\"[color, size, style]\"\n  [class.rounded-md]=\"isRounded\"\n  [disabled]=\"isDisabled\"\n  [attr.type]=\"type\">\n  <ng-content></ng-content>\n</button>\n"
+            "templateData": "<button\r\n  [ngClass]=\"[color, size, style]\"\r\n  [class.rounded-md]=\"isRounded\"\r\n  [class.disabled]=\"isDisabled\"\r\n  [disabled]=\"isDisabled\"\r\n  [attr.type]=\"type\">\r\n  <ng-content></ng-content>\r\n</button>\r\n"
+        },
+        {
+            "name": "ClubListComponent",
+            "id": "component-ClubListComponent-5b04c011edf19991b20e8404d5dbcb5130a8267f329f2ade47217885c53d51b3914ff2fe1dbe96daa96a38616be9ec50b486906af69b1fe071d9e2ab5bc10740",
+            "file": "src/core/features/club/presentation/components/club-list/club-list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mtun-club-list",
+            "styleUrls": [
+                "./club-list.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./club-list.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'mtun-club-list',\n  templateUrl: './club-list.component.html',\n  styleUrls: ['./club-list.component.scss']\n})\nexport class ClubListComponent {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./club-list.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<p>club-list works!</p>\n"
         },
         {
             "name": "HeaderComponent",
@@ -793,19 +1049,19 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<div class=\"bg-white flex justify-between items-center px-4 py-2\">\n  <img class=\"max-h-16\" [attr.src]=\"logo\" alt=\"brand logo image\">\n  <div class=\"action-content\">\n    <ng-content></ng-content>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"bg-white flex justify-between items-center px-4 py-2\">\n  <img class=\"max-h-12\" [attr.src]=\"logo\" alt=\"brand logo image\">\n  <div class=\"action-content\">\n    <ng-content></ng-content>\n  </div>\n</div>\n"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-b00efa445581fb81afe7202279fef3f2d8fdb0887da547d182cdb03a87249867ae8b42d15b957885cdb94bf9fc3ec3b0ff39f690576c6439fb8a86c1f7a494b8",
+            "id": "module-AppModule-40f5d6037727f7313fa27c6107a6d1eaf47cb3902441e1152a4425a7fd743444eda5b4f4b2f71533ff49bb4a3c95c8caa1fd97b61591f6d46c00c1cd19039c78",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule, isDevMode } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { StoreModule } from '@ngrx/store';\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\nimport { EffectsModule } from '@ngrx/effects';\nimport { ClubModule } from '../core/features/club/presentation/club.module';\nimport { ClubEffects } from '../core/features/club/presentation/store/effects';\nimport { FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { UiModule } from '../ui/ui.module';\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    FontAwesomeModule,\n    UiModule,\n    StoreModule.forRoot({}, {}),\n    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),\n    EffectsModule.forRoot([ClubEffects]),\n    ClubModule,\n  ],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
+            "sourceCode": "import { NgModule, isDevMode } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { StoreModule } from '@ngrx/store';\r\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\r\nimport { EffectsModule } from '@ngrx/effects';\r\nimport { ClubModule } from '../core/features/club/presentation/club.module';\r\nimport { ClubEffects } from '../core/features/club/presentation/store/effects';\r\nimport { FontAwesomeModule } from '@fortawesome/angular-fontawesome';\r\nimport { UiModule } from '../ui/ui.module';\r\n\r\n@NgModule({\r\n  declarations: [AppComponent],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FontAwesomeModule,\r\n    UiModule,\r\n    StoreModule.forRoot({}, {}),\r\n    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),\r\n    EffectsModule.forRoot([ClubEffects]),\r\n    ClubModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -853,13 +1109,13 @@
         },
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-78922b3ae99d2c5249b333980bd5afde1b120b2cc6fedfd41b8b2cc90f279797cb4b22e183bf7e1d1dfab8c6100e77e7812c110234d81f866f544f28a3e18b15",
+            "id": "module-AppRoutingModule-c4719ce15de90c4b4c83a83b31f183bef375324425a58f453a5ef3509194b8e568a2ac14ec160ff7d77b541a341a9694f7477e55a0133be0dbcf0cf4adbe4279",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app-routing.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [\n  {\n    path: 'club',\n    loadChildren: () =>\n      \"import('../core/features/club/presentation/club.module').then(\\\n        (m) => m.ClubModule\\\n      )\",\n  },\n];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule],\n})\nexport class AppRoutingModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -889,13 +1145,57 @@
         },
         {
             "name": "ClubModule",
-            "id": "module-ClubModule-f210fb77ce61505bad1064d1c9f9236e8e820dc30c763cd12562df7e33e25d52faf75cbc37b297bf904551884a664eda375fae3585ccff3e8855e92eaa36cbc2",
+            "id": "module-ClubModule-3561b1fbc70680f3371f99991fdc5d38f18043b746f5278d9ea830cea1664f6c35035313e21ff67dd23c84892f246a9032a74c6a5c350621032dcd5a1bc399d7",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/core/features/club/presentation/club.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport {StoreModule} from \"@ngrx/store\";\nimport {clubFeature} from \"./store/reducer\";\nimport {ClubRepository} from \"../domain/repositories/club.repository\";\nimport {GetAllClubsUseCase} from \"../domain/usecases/get-all-clubs.usecase\";\nimport {ClubInMemoryImplRepository} from \"../data/repositories/club-in-memory-impl.repository\";\n\nconst getUserProfileUseCaseFactory =\n  (clubRepo: ClubRepository) => new GetAllClubsUseCase(clubRepo);\n\nexport const fetchClubsUseCaseProvider = {\n  provide: GetAllClubsUseCase,\n  useFactory: getUserProfileUseCaseFactory,\n  deps: [ClubRepository],\n};\n\n@NgModule({\n  declarations: [],\n  providers: [\n    fetchClubsUseCaseProvider,\n    { provide: ClubRepository, useClass: ClubInMemoryImplRepository }\n  ],\n  imports: [\n    CommonModule,\n    StoreModule.forFeature('club', clubFeature),\n  ]\n})\nexport class ClubModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { StoreModule } from '@ngrx/store';\nimport { clubFeature } from './store/reducer';\nimport { ClubRepository } from '../domain/repositories/club.repository';\nimport { GetAllClubsUseCase } from '../domain/usecases/get-all-clubs.usecase';\nimport { ClubInMemoryImplRepository } from '../data/repositories/club-in-memory-impl.repository';\nimport { ClubRoutingModule } from './club-routing.module';\nimport { ClubListComponent } from './components/club-list/club-list.component';\n\nconst getUserProfileUseCaseFactory = (clubRepo: ClubRepository) =>\n  new GetAllClubsUseCase(clubRepo);\n\nexport const fetchClubsUseCaseProvider = {\n  provide: GetAllClubsUseCase,\n  useFactory: getUserProfileUseCaseFactory,\n  deps: [ClubRepository],\n};\n\n@NgModule({\n  declarations: [\n    ClubListComponent\n  ],\n  providers: [\n    fetchClubsUseCaseProvider,\n    { provide: ClubRepository, useClass: ClubInMemoryImplRepository },\n  ],\n  imports: [\n    CommonModule,\n    ClubRoutingModule,\n    StoreModule.forFeature('club', clubFeature),\n  ],\n})\nexport class ClubModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ClubListComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "ClubRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ClubRoutingModule",
+            "id": "module-ClubRoutingModule-1de0ad713c4702df15c43cb1330848ac866be9794c39578749cac1c477b00f1c7727a2f37d60411c134830d9bfceeadd28111f53b8da63adfdb9d0ebe935b00a",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/core/features/club/presentation/club-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\nimport { ClubListComponent } from './components/club-list/club-list.component';\n\nconst routes: Routes = [{ path: 'list', component: ClubListComponent }];\n\n@NgModule({\n  imports: [RouterModule.forChild(routes)],\n  exports: [RouterModule],\n})\nexport class ClubRoutingModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -961,13 +1261,13 @@
         },
         {
             "name": "UiModule",
-            "id": "module-UiModule-051b7b196ce7188f7ca7dd61a3e622ea5c76c1be833e81194feaab0fe67230d91674bcca735e4f72ac8aa1c0b50a6e70b0e317ee45269ef528debe1ac75d8f78",
+            "id": "module-UiModule-c768260902dea75cdcd1e9d597f7a8c81e835fac4a8e4a198235ebbea7142d899f6b083fd57ad780948db9c960b865df3ec2da925c0ec612d56e89756f6b23f8",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/ui/ui.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule, NgOptimizedImage } from '@angular/common';\nimport { FontawesomeModule } from './fontawesome.module';\nimport { ButtonComponent } from './components/button/button.component';\nimport { HeaderComponent } from './components/header/header.component';\nimport { AvatarComponent } from './components/avatar/avatar.component';\n\n@NgModule({\n  declarations: [ButtonComponent, HeaderComponent, AvatarComponent],\n  imports: [CommonModule, FontawesomeModule, NgOptimizedImage],\n  exports: [ButtonComponent, HeaderComponent, AvatarComponent],\n})\nexport class UiModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule, NgOptimizedImage } from '@angular/common';\nimport { FontawesomeModule } from './fontawesome.module';\nimport { ButtonComponent } from './components/button/button.component';\nimport { HeaderComponent } from './components/header/header.component';\nimport { AvatarComponent } from './components/avatar/avatar.component';\nimport { InputDirective } from './components/input/input.directive';\n\n@NgModule({\n  declarations: [\n    ButtonComponent,\n    HeaderComponent,\n    AvatarComponent,\n    InputDirective,\n  ],\n  imports: [CommonModule, FontawesomeModule, NgOptimizedImage],\n  exports: [ButtonComponent, HeaderComponent, AvatarComponent, InputDirective],\n})\nexport class UiModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -984,6 +1284,9 @@
                         },
                         {
                             "name": "HeaderComponent"
+                        },
+                        {
+                            "name": "InputDirective"
                         }
                     ]
                 },
@@ -1009,6 +1312,9 @@
                         },
                         {
                             "name": "HeaderComponent"
+                        },
+                        {
+                            "name": "InputDirective"
                         }
                     ]
                 },
@@ -1034,6 +1340,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {\n    img: faker.image.avatar(),\n  },\n}"
+            },
+            {
+                "name": "Basic",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/ui/components/input/input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "clubFeature",
@@ -1113,7 +1429,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "(clubRepo: ClubRepository) => new GetAllClubsUseCase(clubRepo)"
+                "defaultValue": "(clubRepo: ClubRepository) =>\n  new GetAllClubsUseCase(clubRepo)"
             },
             {
                 "name": "initialClubState",
@@ -1143,7 +1459,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  title: 'Ui/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  render: (args: ButtonComponent) => ({\n    props: {\n      color: 'primary',\n      content: 'test button',\n      size: 'base',\n      style: 'raised',\n      isRounded: true,\n      isDisabled: false,\n      type: 'button',\n      ...args,\n    },\n    template: `<mtun-button\n        [color]=\"color\"\n        [size]=\"size\"\n        [style]=\"style\"\n        [isRounded]=\"isRounded\"\n        [isDisabled]=\"isDisabled\"\n        [type]=\"type\">\n        Button\n      </mtun-button>`,\n  }),\n}"
+                "defaultValue": "{\r\n  title: 'Ui/Button',\r\n  component: ButtonComponent,\r\n  tags: ['autodocs'],\r\n  render: (args: ButtonComponent) => ({\r\n    props: {\r\n      color: 'primary',\r\n      content: 'test button',\r\n      size: 'base',\r\n      style: 'flat',\r\n      isRounded: true,\r\n      isDisabled: false,\r\n      type: 'button',\r\n      ...args,\r\n    },\r\n    template: `<mtun-button\r\n        [color]=\"color\"\r\n        [size]=\"size\"\r\n        [style]=\"style\"\r\n        [isRounded]=\"isRounded\"\r\n        [isDisabled]=\"isDisabled\"\r\n        [type]=\"type\">\r\n        Button\r\n      </mtun-button>`,\r\n  }),\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/ui/components/input/input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<InputDirective>",
+                "defaultValue": "{\n  title: 'Ui/Input',\n  component: InputDirective,\n  tags: ['autodocs'],\n  render: (args: InputDirective) => ({\n    props: {\n      ...args,\n    },\n    moduleMetadata: {\n      declarations: [InputDirective],\n    },\n    template: `<input UiInput placeholder=\"text here !\" [fieldSize]=\"fieldSize\" />`,\n  }),\n}"
             },
             {
                 "name": "preview",
@@ -1163,7 +1489,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    color: 'primary',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    color: 'primary',\r\n  },\r\n}"
             },
             {
                 "name": "selectFeature",
@@ -1199,6 +1525,50 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 180
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<InputDirective>",
+                "file": "src/ui/components/input/input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 180
+            },
+            {
+                "name": "UiComponentShape",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"rectangle\" | \"semi-round\" | \"round\"",
+                "file": "src/ui/components/types/component-shape.type.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 189
+            },
+            {
+                "name": "UiComponentSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"tiny\" | \"small\" | \"medium\" | \"large\" | \"giant\"",
+                "file": "src/ui/components/types/component-size.type.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 189
+            },
+            {
+                "name": "UiComponentStatus",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"basic\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"control\"",
+                "file": "src/ui/components/types/component-status.type.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 189
             }
         ],
         "enumerations": [],
@@ -1223,6 +1593,28 @@
                     "deprecationMessage": "",
                     "type": "Meta<AvatarComponent>",
                     "defaultValue": "{\n  title: 'Ui/Avatar',\n  component: AvatarComponent,\n  tags: ['autodocs'],\n  render: (args: AvatarComponent) => ({\n    props: {\n      ...args,\n    },\n  }),\n}"
+                }
+            ],
+            "src/ui/components/input/input.stories.ts": [
+                {
+                    "name": "Basic",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/ui/components/input/input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/ui/components/input/input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<InputDirective>",
+                    "defaultValue": "{\n  title: 'Ui/Input',\n  component: InputDirective,\n  tags: ['autodocs'],\n  render: (args: InputDirective) => ({\n    props: {\n      ...args,\n    },\n    moduleMetadata: {\n      declarations: [InputDirective],\n    },\n    template: `<input UiInput placeholder=\"text here !\" [fieldSize]=\"fieldSize\" />`,\n  }),\n}"
                 }
             ],
             "src/core/features/club/presentation/store/reducer.ts": [
@@ -1310,7 +1702,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "(clubRepo: ClubRepository) => new GetAllClubsUseCase(clubRepo)"
+                    "defaultValue": "(clubRepo: ClubRepository) =>\n  new GetAllClubsUseCase(clubRepo)"
                 }
             ],
             "src/core/features/club/presentation/store/selectors.ts": [
@@ -1344,7 +1736,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ButtonComponent>",
-                    "defaultValue": "{\n  title: 'Ui/Button',\n  component: ButtonComponent,\n  tags: ['autodocs'],\n  render: (args: ButtonComponent) => ({\n    props: {\n      color: 'primary',\n      content: 'test button',\n      size: 'base',\n      style: 'raised',\n      isRounded: true,\n      isDisabled: false,\n      type: 'button',\n      ...args,\n    },\n    template: `<mtun-button\n        [color]=\"color\"\n        [size]=\"size\"\n        [style]=\"style\"\n        [isRounded]=\"isRounded\"\n        [isDisabled]=\"isDisabled\"\n        [type]=\"type\">\n        Button\n      </mtun-button>`,\n  }),\n}"
+                    "defaultValue": "{\r\n  title: 'Ui/Button',\r\n  component: ButtonComponent,\r\n  tags: ['autodocs'],\r\n  render: (args: ButtonComponent) => ({\r\n    props: {\r\n      color: 'primary',\r\n      content: 'test button',\r\n      size: 'base',\r\n      style: 'flat',\r\n      isRounded: true,\r\n      isDisabled: false,\r\n      type: 'button',\r\n      ...args,\r\n    },\r\n    template: `<mtun-button\r\n        [color]=\"color\"\r\n        [size]=\"size\"\r\n        [style]=\"style\"\r\n        [isRounded]=\"isRounded\"\r\n        [isDisabled]=\"isDisabled\"\r\n        [type]=\"type\">\r\n        Button\r\n      </mtun-button>`,\r\n  }),\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -1354,7 +1746,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    color: 'primary',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    color: 'primary',\r\n  },\r\n}"
                 }
             ],
             ".storybook/preview.ts": [
@@ -1398,6 +1790,58 @@
                     "description": "",
                     "kind": 180
                 }
+            ],
+            "src/ui/components/input/input.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<InputDirective>",
+                    "file": "src/ui/components/input/input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 180
+                }
+            ],
+            "src/ui/components/types/component-shape.type.ts": [
+                {
+                    "name": "UiComponentShape",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"rectangle\" | \"semi-round\" | \"round\"",
+                    "file": "src/ui/components/types/component-shape.type.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 189
+                }
+            ],
+            "src/ui/components/types/component-size.type.ts": [
+                {
+                    "name": "UiComponentSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"tiny\" | \"small\" | \"medium\" | \"large\" | \"giant\"",
+                    "file": "src/ui/components/types/component-size.type.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 189
+                }
+            ],
+            "src/ui/components/types/component-status.type.ts": [
+                {
+                    "name": "UiComponentStatus",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"basic\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"control\"",
+                    "file": "src/ui/components/types/component-status.type.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 189
+                }
             ]
         }
     },
@@ -1410,7 +1854,24 @@
                 "name": "routes",
                 "filename": "src/app/app-routing.module.ts",
                 "module": "AppRoutingModule",
-                "children": [],
+                "children": [
+                    {
+                        "path": "club",
+                        "loadChildren": "../core/features/club/presentation/club.module#ClubModule"
+                    }
+                ],
+                "kind": "module"
+            },
+            {
+                "name": "routes",
+                "filename": "src/core/features/club/presentation/club-routing.module.ts",
+                "module": "ClubRoutingModule",
+                "children": [
+                    {
+                        "path": "list",
+                        "component": "ClubListComponent"
+                    }
+                ],
                 "kind": "module"
             }
         ]
@@ -1514,12 +1975,12 @@
                 "status": "low"
             },
             {
-                "filePath": "src/core/features/club/presentation/models/clubVM.ts",
-                "type": "class",
-                "linktype": "classe",
-                "name": "ClubVM",
+                "filePath": "src/core/features/club/presentation/components/club-list/club-list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ClubListComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -1702,6 +2163,35 @@
                 "name": "HeaderComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/ui/components/input/input.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "InputDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/17",
+                "status": "low"
+            },
+            {
+                "filePath": "src/ui/components/input/input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Basic",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/ui/components/input/input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             }
         ]
