@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll --coverage",
+    "test:watch:changed": "jest --watchAll --coverage --onlyChanged",
     "storybook": "ng run mtun-front:storybook",
     "build-storybook": "ng run mtun-front:build-storybook"
   },
@@ -64,7 +65,8 @@
     "preset": "jest-preset-angular",
     "collectCoverage": true,
     "moduleNameMapper": {
-      "^@club(.*)$": "<rootDir>/src/core/club$1"
+      "^@club(.*)$": "<rootDir>/src/core/club$1",
+      "^@enums(.*)$": "<rootDir>/src/core/enums$1"
     },
     "coverageReporters": [
       "json",
