@@ -17,10 +17,9 @@ import { GetClubDetailsUseCase } from '@club/useCases/getClubDetails.useCase';
 })
 export class ClubListComponent implements OnInit {
   clubList$: Observable<ClubEntity[]>;
-  clubDetails$: Observable<ClubEntity | null>;
+
   constructor(private readonly store: Store<AppState>) {
     this.clubList$ = store.select(getClubList);
-    this.clubDetails$ = store.select(getClubDetails);
   }
 
   ngOnInit() {

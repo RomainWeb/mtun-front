@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@club/*": ["src/core/club/*"],
+      "@club/*": ["src/features/club/*"],
       "@enums/*": ["src/core/enums/*"]
     },
     "outDir": "./dist/out-tsc",

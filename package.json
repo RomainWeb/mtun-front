@@ -15,6 +15,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.1.0",
+    "@angular/cdk": "^15.0.0",
     "@angular/common": "^16.1.0",
     "@angular/compiler": "^16.1.0",
     "@angular/core": "^16.1.0",
@@ -27,10 +28,13 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@nebular/eva-icons": "11.0.0",
+    "@nebular/theme": "11.0.0",
     "@ngrx/effects": "16.1.0",
     "@ngrx/store": "16.1.0",
     "@ngrx/store-devtools": "16.1.0",
     "date-fns": "^2.30.0",
+    "eva-icons": "^1.1.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
@@ -41,6 +45,7 @@
     "@angular/compiler-cli": "^16.1.0",
     "@compodoc/compodoc": "1.1.21",
     "@faker-js/faker": "^8.0.2",
+    "@schematics/angular": "~16.1.5",
     "@storybook/addon-docs": "7.1.1",
     "@storybook/addon-essentials": "7.1.1",
     "@storybook/addon-interactions": "7.1.1",
@@ -65,7 +70,7 @@
     "preset": "jest-preset-angular",
     "collectCoverage": true,
     "moduleNameMapper": {
-      "^@club(.*)$": "<rootDir>/src/core/club$1",
+      "^@club(.*)$": "<rootDir>/src/features/club$1",
       "^@enums(.*)$": "<rootDir>/src/core/enums$1"
     },
     "coverageReporters": [

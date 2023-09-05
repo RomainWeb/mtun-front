@@ -10,6 +10,7 @@ import { GetAllClubsUseCase } from '@club/useCases/getAllClubs.useCase';
 import { EffectsModule } from '@ngrx/effects';
 import { ClubEffects } from '@club/presentation/store/effects';
 import { GetClubDetailsUseCase } from '@club/useCases/getClubDetails.useCase';
+import { ClubDetailsComponent } from '@club/presentation/components/club-details/club-details.component';
 
 const getAllClubsUseCaseFactory = (clubRepository: ClubRepository) =>
   new GetAllClubsUseCase(clubRepository);
@@ -18,7 +19,7 @@ const getClubDetailsUseCaseFactory = (clubRepository: ClubRepository) =>
   new GetClubDetailsUseCase(clubRepository);
 
 @NgModule({
-  declarations: [ClubListComponent],
+  declarations: [ClubListComponent, ClubDetailsComponent],
   providers: [
     { provide: ClubRepository, useClass: InMemoryClubAdapter },
     {
@@ -38,6 +39,6 @@ const getClubDetailsUseCaseFactory = (clubRepository: ClubRepository) =>
     StoreModule.forFeature('club', clubFeature),
     EffectsModule.forFeature([ClubEffects]),
   ],
-  exports: [ClubListComponent],
+  exports: [ClubListComponent, ClubDetailsComponent],
 })
 export class ClubModule {}

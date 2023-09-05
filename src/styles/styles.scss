@@ -1,10 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@use 'nebular' as *;
 
+// framework component styles
+@use '@nebular/theme/styles/globals' as *;
 @import 'fonts';
-@import "../ui/styles/theming";
+
+// install the framework styles
+@include nb-install() {
+  @include nb-theme-global();
+}
 
 html, body {
   height: 100%;
