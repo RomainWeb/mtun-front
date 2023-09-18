@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: 'club',
     loadChildren: () =>
-      import('../features/club/configuration/club.module').then(
+      import('../infrastructure/configuration/club/club.module').then(
         (m) => m.ClubModule
       ),
   },

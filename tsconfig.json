@@ -3,8 +3,11 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@club/*": ["src/features/club/*"],
-      "@enums/*": ["src/core/enums/*"]
+      "@core/*": ["src/core/*"],
+      "@enums/*": ["src/core/common/enums/*"],
+      "@domain/*": ["src/core/domain/*"],
+      "@infrastructure/*": ["src/infrastructure/*"],
+      "@presentation/*": ["src/presentation/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

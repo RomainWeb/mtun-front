@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { faker } from '@faker-js/faker';
-import { DateTimeRepository } from '../core/infrastucture/datetime/repositories/dateTime.repository';
+import { DateTimeRepository } from '../infrastructure/datetime/repositories/dateTime.repository';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'mtun-root',
@@ -9,5 +10,7 @@ import { DateTimeRepository } from '../core/infrastucture/datetime/repositories/
 })
 export class AppComponent {
   avatar = faker.image.avatar();
-  constructor() {}
+  constructor() {
+    console.log(environment.apiUrl);
+  }
 }

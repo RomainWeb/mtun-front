@@ -70,8 +70,11 @@
     "preset": "jest-preset-angular",
     "collectCoverage": true,
     "moduleNameMapper": {
-      "^@club(.*)$": "<rootDir>/src/features/club$1",
-      "^@enums(.*)$": "<rootDir>/src/core/enums$1"
+      "@club(.*)$": ["<rootDir>/src/core$1"],
+      "@enums(.*)$": ["<rootDir>/src/core/common/enums$1"],
+      "@domain(.*)$": ["<rootDir>/src/core/domain$1"],
+      "@infrastructure(.*)$": ["<rootDir>/src/infrastructure$1"],
+      "@presentation(.*)$": ["<rootDir>/src/presentation$1"]
     },
     "coverageReporters": [
       "json",
