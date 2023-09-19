@@ -3,11 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'club',
+    path: 'time-slot',
     loadChildren: () =>
-      import('../infrastructure/configuration/club/club.module').then(
-        (m) => m.ClubModule
-      ),
+      import('./time-slot/time-slot.module').then((m) => m.TimeSlotModule),
   },
 ];
 

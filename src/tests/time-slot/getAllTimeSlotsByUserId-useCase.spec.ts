@@ -7,7 +7,7 @@ describe('get all time slots by user id use case', () => {
   let timeSlotPort: TimeSlotPort;
 
   beforeEach(() => {
-    timeSlotPort = new InMemoryTimeSlotAdapter();
+    timeSlotPort = new InMemoryTimeSlotAdapter(TIME_SLOT_MOCK_LIST);
   });
 
   it('should return an empty time slots if they no time slot', (done) => {

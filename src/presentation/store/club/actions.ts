@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ClubEntity } from '../../core/domain/club/entities/club.entity';
+import { ClubEntity } from '@domain/club/entities/club.entity';
 
 export const fetchClubs = createAction('[club] fetch club List');
 

@@ -1,6 +1,6 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import * as fromActions from './actions';
-import { ClubEntity } from '../../core/domain/club/entities/club.entity';
+import { ClubEntity } from '@domain/club/entities/club.entity';
 
 export interface ClubState {
   clubs: ClubEntity[];

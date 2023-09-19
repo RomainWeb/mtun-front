@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as fromActions from './actions';
 import { catchError, exhaustMap, map, of } from 'rxjs';
-import { GetAllClubsUseCase } from '../../core/domain/club/useCases/getAllClubs.useCase';
-import { ClubEntity } from '../../core/domain/club/entities/club.entity';
-import { GetClubDetailsUseCase } from '../../core/domain/club/useCases/getClubDetails.useCase';
+import { GetAllClubsUseCase } from '@domain/club/useCases/getAllClubs.useCase';
+import { ClubEntity } from '@domain/club/entities/club.entity';
+import { GetClubDetailsUseCase } from '@domain/club/useCases/getClubDetails.useCase';
 
 @Injectable()
 export class ClubEffects {
