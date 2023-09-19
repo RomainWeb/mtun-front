@@ -5,6 +5,10 @@
 @use '@nebular/theme/styles/globals' as *;
 @import 'fonts';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 // install the framework styles
 @include nb-install() {
   @include nb-theme-global();

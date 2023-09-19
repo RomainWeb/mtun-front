@@ -1,1 +1,31 @@
-<pre>{{ (timeSlots$ | async) | json }}</pre>
+<h5>Liste des créneaux à venir</h5>
+
+<div class="mt-4">
+  <nb-card *ngFor="let timeSlot of (timeSlots$ | async)">
+    <nb-card-header>
+      <div class="flex items-center">
+        <span class="flex flex-col flex-1">
+          <span>Groupe du {{ timeSlot.endDate | date: 'EEEE' }}</span>
+          <span>De {{ timeSlot.startDate | date: 'HH:mm' }} à {{ timeSlot.endDate | date: 'HH:mm' }}</span>
+        </span>
+        <button size="small" nbButton ghost>
+          <fa-icon [icon]="['fas', 'ellipsis-vertical']"></fa-icon>
+        </button>
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="flex flex-col gap-4">
+      <span class="flex gap-1 flex-wrap">
+        <nb-tag status="basic" appearance="filled" text="Jean-Marie Julian" size="tiny"></nb-tag>
+        <nb-tag status="basic" appearance="filled" text="Annic Julian" size="tiny"></nb-tag>
+        <nb-tag status="basic" appearance="filled" text="Anthony Fourmentin" size="tiny"></nb-tag>
+        <nb-tag status="basic" appearance="filled" text="Romain Mercier" size="tiny"></nb-tag>
+        <nb-tag status="basic" appearance="filled" text="Camille Julian" size="tiny"></nb-tag>
+      </span>
+        <span class="caption">{{ timeSlot.description }}</span>
+      </div>
+    </nb-card-body>
+    <nb-card-footer><fa-icon [icon]="['fas', 'check-double']"></fa-icon></nb-card-footer>
+  </nb-card>
+
+</div>

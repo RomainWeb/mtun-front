@@ -10,6 +10,10 @@ import { TimeSlotPort } from '@domain/time-slot/ports/timeSlot.port';
 import { GetAllTimeSlotsByUserIdUseCase } from '@domain/time-slot/useCases/getAllTimeSlotsByUserId.useCase';
 import { InMemoryTimeSlotAdapter } from '@infrastructure/data/time-slot/adapters/inMemoryTimeSlot.adapter';
 import { TIME_SLOT_MOCK_LIST } from '../../tests/mocks/timeSlotBuildList.mock';
+import { NbButtonModule, NbCardModule, NbTagModule } from '@nebular/theme';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpTimeSlotAdapter } from '@infrastructure/data/time-slot/adapters/httpTimeSlot.adapter';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 const getAllTimeSlotsByUserIdUseCaseFactory = (timeSlotPort: TimeSlotPort) =>
   new GetAllTimeSlotsByUserIdUseCase(timeSlotPort);
@@ -19,13 +23,18 @@ const getAllTimeSlotsByUserIdUseCaseFactory = (timeSlotPort: TimeSlotPort) =>
   imports: [
     CommonModule,
     TimeSlotRoutingModule,
+    HttpClientModule,
+    NbCardModule,
+    NbTagModule,
     StoreModule.forFeature('timeSlot', timeSlotFeature),
     EffectsModule.forFeature([TimeSlotEffects]),
+    FontAwesomeModule,
+    NbButtonModule,
   ],
   providers: [
     {
       provide: TimeSlotPort,
-      useFactory: () => new InMemoryTimeSlotAdapter(TIME_SLOT_MOCK_LIST),
+      useClass: HttpTimeSlotAdapter,
     },
     {
       provide: GetAllTimeSlotsByUserIdUseCase,

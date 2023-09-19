@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule, isDevMode, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,12 @@ import {
   NbThemeModule,
 } from '@nebular/theme';
 import { TimeSlotModule } from './time-slot/time-slot.module';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ResponseInterceptor } from '@infrastructure/common/response.interceptor';
+
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +40,11 @@ import { TimeSlotModule } from './time-slot/time-slot.module';
     EffectsModule.forRoot([]),
     TimeSlotModule,
   ],
-  providers: [{ provide: DateTimeRepository, useClass: DateFnsAdapter }],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr' },
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
+    { provide: DateTimeRepository, useClass: DateFnsAdapter },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -4,7 +4,13 @@ import {
   FontAwesomeModule,
   FaIconLibrary,
 } from '@fortawesome/angular-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCheck,
+  faCheckDouble,
+  faExclamation,
+  faQuestion,
+  faEllipsisV,
+} from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [],
@@ -13,6 +19,12 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 export class FontawesomeModule {
   constructor(library: FaIconLibrary) {
     // Add an icon to the library for convenient access in other components
-    library.addIcons(faCoffee);
+    library.addIcons(
+      faCheck,
+      faCheckDouble,
+      faExclamation,
+      faQuestion,
+      faEllipsisV
+    );
   }
 }
