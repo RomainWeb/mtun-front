@@ -1,4 +1,5 @@
 export enum TimeSlotStatusEnum {
   NotStarted,
-  Ended,
+  Completed,
+  Canceled,
 }
