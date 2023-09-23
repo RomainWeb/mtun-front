@@ -1,6 +1,6 @@
 <h1 class="h1 mb-8">Authentification</h1>
 <form [formGroup]="loginFormGroup" (ngSubmit)="login()" novalidate class="flex flex-col gap-8">
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-2">
     <h5>Email</h5>
     <input
       type="email"
@@ -9,8 +9,11 @@
       fullWidth
       placeholder="email"
       formControlName="email">
+    <div class="h-2">
+      <span *ngIf="getRequiredEmailError" class="text-red-500 text-sm italic ml-2 -mt-2">email is required</span>
+    </div>
   </div>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-2">
     <h5>password</h5>
     <input
       type="password"
@@ -19,6 +22,9 @@
       fullWidth
       placeholder="password"
       formControlName="password">
+    <div class="h-2">
+      <span *ngIf="getRequiredPasswordError" class="text-red-500 text-sm italic ml-2 -mt-2">password is required</span>
+    </div>
   </div>
   <button type="submit" nbButton status="primary">Login</button>
 </form>

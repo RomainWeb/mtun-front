@@ -60,10 +60,24 @@ export class LoginComponent {
       : 'basic';
   }
 
+  get getRequiredEmailError(): boolean {
+    return (
+      this.emailCtrl.getError('required') &&
+      (this.emailCtrl.dirty || this.emailCtrl.touched)
+    );
+  }
+
   get getPasswordStatus(): NbComponentOrCustomStatus {
     return this.passwordCtrl.invalid &&
       (this.passwordCtrl.dirty || this.passwordCtrl.touched)
       ? 'danger'
       : 'basic';
+  }
+
+  get getRequiredPasswordError(): boolean {
+    return (
+      this.passwordCtrl.invalid &&
+      (this.passwordCtrl.dirty || this.passwordCtrl.touched)
+    );
   }
 }
