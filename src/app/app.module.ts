@@ -21,6 +21,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ResponseInterceptor } from '@infrastructure/common/response.interceptor';
+import { AuthModule } from './auth/auth.module';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -39,6 +40,7 @@ registerLocaleData(localeFr, 'fr');
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
     TimeSlotModule,
+    AuthModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr' },

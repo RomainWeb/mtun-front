@@ -1,0 +1,24 @@
+<h1 class="h1 mb-8">Authentification</h1>
+<form [formGroup]="loginFormGroup" (ngSubmit)="login()" novalidate class="flex flex-col gap-8">
+  <div class="flex flex-col gap-4">
+    <h5>Email</h5>
+    <input
+      type="email"
+      [status]="getEmailStatus"
+      nbInput
+      fullWidth
+      placeholder="email"
+      formControlName="email">
+  </div>
+  <div class="flex flex-col gap-4">
+    <h5>password</h5>
+    <input
+      type="password"
+      [status]="getPasswordStatus"
+      nbInput
+      fullWidth
+      placeholder="password"
+      formControlName="password">
+  </div>
+  <button type="submit" nbButton status="primary">Login</button>
+</form>

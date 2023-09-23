@@ -8,8 +8,6 @@ import { StoreModule } from '@ngrx/store';
 import { timeSlotFeature } from '@presentation/store/time-slot/reducer';
 import { TimeSlotPort } from '@domain/time-slot/ports/timeSlot.port';
 import { GetAllTimeSlotsByUserIdUseCase } from '@domain/time-slot/useCases/getAllTimeSlotsByUserId.useCase';
-import { InMemoryTimeSlotAdapter } from '@infrastructure/data/time-slot/adapters/inMemoryTimeSlot.adapter';
-import { TIME_SLOT_MOCK_LIST } from '../../tests/mocks/timeSlotBuildList.mock';
 import { NbButtonModule, NbCardModule, NbTagModule } from '@nebular/theme';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpTimeSlotAdapter } from '@infrastructure/data/time-slot/adapters/httpTimeSlot.adapter';
