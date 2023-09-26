@@ -6,6 +6,6 @@ import { ProfileResponseDto } from '@infrastructure/data/auth/dtos/profileRespon
 
 export abstract class AuthPort {
   abstract login(data: LoginRequestDto): Observable<LoginResponseDto>;
-  abstract profile(data: ProfileRequestDto): Observable<ProfileResponseDto>;
+  abstract profile(): Observable<ProfileResponseDto>;
   abstract refreshToken(token: string): Observable<string>;
 }

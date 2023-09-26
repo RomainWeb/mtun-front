@@ -9,7 +9,7 @@ export class ProfileUseCase
 {
   constructor(private authPort: AuthPort) {}
 
-  execute(data: ProfileRequestDto): Observable<ProfileResponseDto> {
-    return this.authPort.profile(data);
+  execute(): Observable<ProfileResponseDto> {
+    return this.authPort.profile();
   }
 }

@@ -11,7 +11,7 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(fromActions.fetchProfile),
       exhaustMap((action) =>
-        this.profileUseCase.execute({ email: action.email }).pipe(
+        this.profileUseCase.execute().pipe(
           map((userProfile: UserEntity) =>
             fromActions.fetchProfileSuccess({ userProfile })
           ),

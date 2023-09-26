@@ -20,7 +20,7 @@ export class HttpAuthAdapter implements AuthPort {
     );
   }
 
-  profile(data: ProfileRequestDto): Observable<ProfileResponseDto> {
+  profile(): Observable<ProfileResponseDto> {
     return this.http.get<ProfileResponseDto>(
       environment.apiUrl + 'auth/profile'
     );

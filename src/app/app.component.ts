@@ -13,12 +13,12 @@ export class AppComponent implements OnInit {
   constructor(private readonly store: Store<AppState>) {}
 
   ngOnInit(): void {
-    // this.store
-    //   .select(getUserProfile)
-    //   .subscribe((userProfile: UserEntity | null) => {
-    //     if (localStorage.getItem('auth-token') && !userProfile) {
-    //       this.store.dispatch(fetchProfile());
-    //     }
-    //   });
+    this.store
+      .select(getUserProfile)
+      .subscribe((userProfile: UserEntity | null) => {
+        if (localStorage.getItem('auth-token') && !userProfile) {
+          this.store.dispatch(fetchProfile());
+        }
+      });
   }
 }

@@ -10,8 +10,6 @@ export class HttpTimeSlotAdapter implements TimeSlotPort {
   constructor(private readonly http: HttpClient) {}
 
   getAllTimeSlotsByUserId(): Observable<TimeSlotEntity[]> {
-    return this.http.get<TimeSlotEntity[]>(
-      environment.apiUrl + 'time-slot/' + 3
-    );
+    return this.http.get<TimeSlotEntity[]>(environment.apiUrl + 'time-slot');
   }
 }

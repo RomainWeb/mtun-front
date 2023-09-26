@@ -57,7 +57,6 @@ export class LoginComponent {
             <string>result.refreshToken
           );
           this.router.navigate(['list']);
-          this.store.dispatch(fetchProfile({ email: this.emailCtrl.value }));
         });
     }
   }
