@@ -5,6 +5,9 @@ import { LoginResponseDto } from '@infrastructure/data/auth/dtos/LoginResponse.d
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
+import { data } from 'autoprefixer';
+import { ProfileRequestDto } from '@infrastructure/data/auth/dtos/profileRequest.dto';
+import { ProfileResponseDto } from '@infrastructure/data/auth/dtos/profileResponse.dto';
 
 @Injectable()
 export class HttpAuthAdapter implements AuthPort {
@@ -15,5 +18,17 @@ export class HttpAuthAdapter implements AuthPort {
       environment.apiUrl + 'auth/login',
       data
     );
+  }
+
+  profile(data: ProfileRequestDto): Observable<ProfileResponseDto> {
+    return this.http.get<ProfileResponseDto>(
+      environment.apiUrl + 'auth/profile'
+    );
+  }
+
+  refreshToken(token: string): Observable<string> {
+    return this.http.post<string>(environment.apiUrl + 'auth/refresh', {
+      refreshToken: token,
+    });
   }
 }

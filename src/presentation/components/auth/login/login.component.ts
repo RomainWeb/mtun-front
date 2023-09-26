@@ -10,6 +10,9 @@ import { LoginRequestDto } from '@infrastructure/data/auth/dtos/LoginRequest.dto
 import { NbComponentOrCustomStatus } from '@nebular/theme';
 import { LoginResponseDto } from '@infrastructure/data/auth/dtos/LoginResponse.dto';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '@presentation/store/user/selectors';
+import { fetchProfile } from '@presentation/store/user/actions';
 
 @Component({
   selector: 'mtun-login',
@@ -23,8 +26,9 @@ export class LoginComponent {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly loginUseCase: LoginUseCase,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly store: Store<AppState>,
+    private readonly loginUseCase: LoginUseCase
   ) {
     this.emailCtrl = new FormControl<string>('', [Validators.required]);
     this.passwordCtrl = new FormControl<string>('', [Validators.required]);
@@ -47,8 +51,13 @@ export class LoginComponent {
       this.loginUseCase
         .execute(loginRequest)
         .subscribe((result: LoginResponseDto) => {
-          localStorage.setItem('token', <string>result.accessToken);
+          localStorage.setItem('auth-token', <string>result.accessToken);
+          localStorage.setItem(
+            'auth-refresh-token',
+            <string>result.refreshToken
+          );
           this.router.navigate(['list']);
+          this.store.dispatch(fetchProfile({ email: this.emailCtrl.value }));
         });
     }
   }

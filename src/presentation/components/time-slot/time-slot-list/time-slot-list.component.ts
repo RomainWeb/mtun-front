@@ -19,7 +19,7 @@ export class TimeSlotListComponent implements OnInit {
   constructor(private readonly store: Store<AppState>) {}
 
   ngOnInit() {
-    this.store.dispatch(fetchTimeSlots({ userId: 2 }));
+    this.store.dispatch(fetchTimeSlots({ userId: 3 }));
     this.timeSlots$ = this.store.select(getTimeSlotList);
   }
 }
