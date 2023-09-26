@@ -16,7 +16,7 @@ export class InMemoryAuthAdapter implements AuthPort {
     return of(this._loginResponse);
   }
 
-  profile(data: ProfileRequestDto): Observable<ProfileResponseDto> {
+  profile(): Observable<ProfileResponseDto> {
     return of({
       name: 'Yann name',
       email: 'yann@gmail.com',

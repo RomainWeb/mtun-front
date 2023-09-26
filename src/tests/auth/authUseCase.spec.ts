@@ -69,11 +69,9 @@ describe('login use case', () => {
 
       const profileUseCase = buildProfileUseCase(loginResponse);
 
-      profileUseCase
-        .execute({ email: 'yann@gmail.com' })
-        .subscribe((result: ProfileResponseDto) => {
-          expect(result).toEqual(profileResponse);
-        });
+      profileUseCase.execute().subscribe((result: ProfileResponseDto) => {
+        expect(result).toEqual(profileResponse);
+      });
     });
   });
 
