@@ -10,9 +10,6 @@ import { LoginRequestDto } from '@infrastructure/data/auth/dtos/LoginRequest.dto
 import { NbComponentOrCustomStatus } from '@nebular/theme';
 import { LoginResponseDto } from '@infrastructure/data/auth/dtos/LoginResponse.dto';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { AppState } from '@presentation/store/user/selectors';
-import { fetchProfile } from '@presentation/store/user/actions';
 
 @Component({
   selector: 'mtun-login',
@@ -27,7 +24,6 @@ export class LoginComponent {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly router: Router,
-    private readonly store: Store<AppState>,
     private readonly loginUseCase: LoginUseCase
   ) {
     this.emailCtrl = new FormControl<string>('', [Validators.required]);

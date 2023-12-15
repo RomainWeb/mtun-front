@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthPort } from '@domain/auth/ports/auth.port';
 import { LoginUseCase } from '@domain/auth/usecase/login.useCase';
 import { HttpAuthAdapter } from '@infrastructure/data/auth/adapters/httpAuth.adapter';
 import { LoginComponent } from '@presentation/components/auth/login/login.component';
@@ -15,17 +14,25 @@ import { UserEffects } from '@presentation/store/user/effects';
 import { ProfileUseCase } from '@domain/auth/usecase/profile.useCase';
 import { TokenPort } from '@domain/auth/ports/token.port';
 import { TokenAdapter } from '@infrastructure/persistence/token/token.adapter';
-import { authInterceptorProviders } from '@infrastructure/common/auth.interceptor';
 import { jwtInterceptorProviders } from '@infrastructure/common/jwt.interceptor';
 import { userFeature } from '@presentation/store/user/reducers';
+import { RegisterComponent } from '@presentation/components/auth/register/register.component';
+import { LoginPort } from '@domain/auth/ports/login.port';
+import { ProfilePort } from '@domain/auth/ports/profile.port';
+import { RegisterPort } from '@domain/auth/ports/register.port';
+import { RegisterUseCase } from '@domain/auth/usecase/register.useCase';
 
-const loginUseCaseFactory = (authPort: AuthPort) => new LoginUseCase(authPort);
+const loginUseCaseFactory = (loginPort: LoginPort) =>
+  new LoginUseCase(loginPort);
 
-const profileUserCaseFactory = (authPort: AuthPort) =>
-  new ProfileUseCase(authPort);
+const profileUserCaseFactory = (profilePort: ProfilePort) =>
+  new ProfileUseCase(profilePort);
+
+const registerUseCaseFactory = (registerPort: RegisterPort) =>
+  new RegisterUseCase(registerPort);
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
@@ -40,7 +47,15 @@ const profileUserCaseFactory = (authPort: AuthPort) =>
   providers: [
     jwtInterceptorProviders,
     {
-      provide: AuthPort,
+      provide: LoginPort,
+      useClass: HttpAuthAdapter,
+    },
+    {
+      provide: RegisterPort,
+      useClass: HttpAuthAdapter,
+    },
+    {
+      provide: ProfilePort,
       useClass: HttpAuthAdapter,
     },
     {
@@ -50,12 +65,17 @@ const profileUserCaseFactory = (authPort: AuthPort) =>
     {
       provide: LoginUseCase,
       useFactory: loginUseCaseFactory,
-      deps: [AuthPort],
+      deps: [LoginPort],
     },
     {
       provide: ProfileUseCase,
       useFactory: profileUserCaseFactory,
-      deps: [AuthPort],
+      deps: [ProfilePort],
+    },
+    {
+      provide: RegisterUseCase,
+      useFactory: registerUseCaseFactory,
+      deps: [RegisterPort],
     },
   ],
 })
